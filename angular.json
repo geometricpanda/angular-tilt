@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "angular-tilt": "libs/angular-tilt",
+    "tilt-app": "apps/tilt-app",
+    "tilt-app-e2e": "apps/tilt-app-e2e"
+  }
+}
