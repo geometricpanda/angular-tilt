@@ -1,7 +1,3 @@
-# angular-tilt
+# Angular Tilt
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test angular-tilt` to execute the unit tests.
+See [Angular Tilt](https://github.com/geometricpanda/angular-tilt) on GitHub

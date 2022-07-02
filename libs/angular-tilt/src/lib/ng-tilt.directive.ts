@@ -6,16 +6,16 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import {TiltMousePositions, TiltValues} from './tilt.interface';
+import {NgTiltMousePositions, NgTiltValues} from './ng-tilt.interface';
 
 @Directive({
-  selector: '[geoTilt]',
-  exportAs: 'geoTilt',
+  selector: '[ngTilt]',
+  exportAs: 'ngTilt',
 })
-export class TiltDirective implements OnInit {
+export class NgTiltDirective implements OnInit {
 
   private _timeout?: number;
-  private _mousePositions!: TiltMousePositions;
+  private _mousePositions!: NgTiltMousePositions;
   private _ticking = false;
   private _resetting = false;
 
@@ -31,17 +31,16 @@ export class TiltDirective implements OnInit {
   @HostBinding('style.transform-style')
   private readonly _hbStyleTransformStyle = 'preserve-3d';
 
-
   /** The maximum tilt rotation (degrees) */
-  @Input() maxTilt = 50;
+  @Input() maxTilt = 20;
   /** Sets the perspective, lower numbers will transition more */
-  @Input() perspective = 500;
+  @Input() perspective = 300;
   /** Easing effect on mouse enter / exit */
   @Input() easing = 'cubic-bezier(.03,.98,.52,.99)';
   /** Sets the scale to increase on hover */
   @Input() scale = 1;
   /** Sets the speed of the transition (in ms) */
-  @Input() speed = 1000;
+  @Input() speed = 400;
   /** Disables tilting on a specific */
   @Input() disableAxis?: 'x' | 'y' = undefined;
   /** If the tilt effect has to be reset on mouse exit */
@@ -84,7 +83,7 @@ export class TiltDirective implements OnInit {
     this._ticking = true;
   };
 
-  private getMousePositions($event?: MouseEvent): TiltMousePositions {
+  private getMousePositions($event?: MouseEvent): NgTiltMousePositions {
 
     if (!$event) {
       const {offsetTop, offsetLeft, clientWidth, clientHeight} = this.elRef.nativeElement;
@@ -101,7 +100,7 @@ export class TiltDirective implements OnInit {
   }
 
 
-  private getTiltValues(): TiltValues {
+  private getTiltValues(): NgTiltValues {
     const {width, height, left, top} = this.elRef.nativeElement.getBoundingClientRect();
 
     const percentageX = (this._mousePositions.x - left) / width;

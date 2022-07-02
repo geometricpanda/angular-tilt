@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {TiltModule} from '@geometricpanda/angular-tilt';
+import {NgTiltModule} from '@geometricpanda/angular-tilt';
 
 import { AppComponent } from './app.component';
 
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, TiltModule],
+  imports: [BrowserModule, NgTiltModule],
   providers: [],
   bootstrap: [AppComponent],
 })

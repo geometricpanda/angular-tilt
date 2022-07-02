@@ -1,4 +1,4 @@
-export interface TiltValues {
+export interface NgTiltValues {
   tiltX: number;
   tiltY: number;
   percentageX: number;
@@ -6,7 +6,7 @@ export interface TiltValues {
   angle: number;
 }
 
-export interface TiltMousePositions {
+export interface NgTiltMousePositions {
   x: number;
   y: number;
 }

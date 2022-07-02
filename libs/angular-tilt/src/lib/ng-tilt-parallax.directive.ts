@@ -1,9 +1,9 @@
 import {Directive, HostBinding, Input} from '@angular/core';
 
 @Directive({
-  selector: '[geoTiltChild]',
+  selector: '[ngTiltParallax]',
 })
-export class TiltChildDirective {
+export class NgTiltParallaxDirective {
 
   @HostBinding('style.transform')
   private get _hbStyleTransform(): string {
