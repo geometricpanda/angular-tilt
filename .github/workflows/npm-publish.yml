@@ -1,0 +1,38 @@
+name: Node.js Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: yarn --frozen-lockfile
+      - run: yarn nx run angular-tilt:build:production
+      - uses: actions/upload-artifact@master
+        with:
+          name: angular-tilt
+          path: dist/libs/angular-tilt
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+      - uses: actions/download-artifact@master
+        with:
+          name: angular-tilt
+          path: dist/libs/angular-tilt
+      - name: Clean temp directory
+        run: npm publish
+        working-directory: dist/libs/angular-tilt
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
