@@ -1,0 +1,202 @@
+<app-hero>
+  <div class="hero">
+    <div class="hero__text">
+      <h1 app-type size="T700" weight="bold" marginBottom>Playground</h1>
+      <p app-type size="T400">Configure angular-tilt and see the results in real-time.</p>
+    </div>
+
+  </div>
+</app-hero>
+
+<div class="playground">
+
+  <div class="playground__form">
+    <mat-card>
+      <mat-card-content>
+        <form class="form" [formGroup]="configuratorForm">
+          <h2 app-type size="T400" weight="heavy" marginBottom>Inputs</h2>
+          <div class="form__control">
+            <label id="perspective-label" class="form__control-label" app-type>
+              Perspective
+            </label>
+            <div class="form__control-description" app-type size="T200" weight="light">
+              Sets the perspective of the plane to the observer.
+            </div>
+            <div class="form__control-value" app-type>
+              {{configuratorForm.get('perspective')!.value}}
+            </div>
+            <div class="form__control-input">
+              <mat-slider
+                formControlName="perspective"
+                aria-labelledby="perspective-label"
+                [thumbLabel]="true"
+                [max]="500"
+                [min]="300"
+                [step]="1">
+              </mat-slider>
+            </div>
+          </div>
+          <div class="form__control">
+            <label id="max-tilt-label" class="form__control-label" app-type>
+              Max Tilt
+            </label>
+            <div class="form__control-description" app-type size="T200" weight="light">
+              Maximum amount of tilt to apply.
+            </div>
+            <div class="form__control-value" app-type>
+              {{configuratorForm.get('maxTilt')!.value}}
+            </div>
+            <div class="form__control-input">
+              <mat-slider
+                formControlName="maxTilt"
+                aria-labelledby="max-tilt-label"
+                [max]="45"
+                [min]="0"
+                [step]="1">
+              </mat-slider>
+            </div>
+          </div>
+          <div class="form__control">
+            <label id="scale-label" class="form__control-label" app-type>
+              Scale
+            </label>
+            <div class="form__control-description" app-type size="T200" weight="light">
+              Sets the CSS scale when tilting.
+            </div>
+            <div class="form__control-value" app-type>
+              {{configuratorForm.get('scale')!.value}}
+            </div>
+            <div class="form__control-input">
+              <mat-slider
+                formControlName="scale"
+                aria-labelledby="scale-label"
+                [max]="1.5"
+                [min]="0.8"
+                [step]="0.1">
+              </mat-slider>
+            </div>
+          </div>
+          <div class="form__control">
+            <label id="speed-label" class="form__control-label" app-type>
+              Speed
+            </label>
+            <div class="form__control-description" app-type size="T200" weight="light">
+              Sets the speed of the reset animation.
+            </div>
+            <div class="form__control-value" app-type>
+              {{configuratorForm.get('speed')!.value}}
+            </div>
+            <div class="form__control-input">
+              <mat-slider
+                formControlName="speed"
+                aria-labelledby="speed-label"
+                [max]="1500"
+                [min]="50"
+                [step]="1">
+              </mat-slider>
+            </div>
+          </div>
+          <div class="form__control">
+            <label id="distance-label" class="form__control-label" app-type>
+              Distance
+            </label>
+            <div class="form__control-description" app-type size="T200" weight="light">
+              Sets the parallax distance of the children.
+            </div>
+            <div class="form__control-value" app-type>
+              {{configuratorForm.get('distance')!.value}}
+            </div>
+            <div class="form__control-input">
+              <mat-slider
+                formControlName="distance"
+                aria-labelledby="distance-label"
+                [max]="100"
+                [min]="0"
+                [step]="1">
+              </mat-slider>
+            </div>
+          </div>
+          <div class="form__control">
+            <label id="reset-label" class="form__control-label" app-type>
+              Reset
+            </label>
+            <div class="form__control-description" app-type size="T200" weight="light" marginBottom>
+              Resets the tilt to default on mouse out.
+            </div>
+            <div class="form__control-value" app-type>
+              {{configuratorForm.get('reset')!.value}}
+            </div>
+            <div class="form__control-input">
+              <mat-slide-toggle
+                formControlName="reset"
+                aria-labelledby="reset-label"
+              ></mat-slide-toggle>
+
+            </div>
+          </div>
+          <div class="form__control">
+            <label id="easing-label" class="form__control-label" app-type>
+              Easing
+            </label>
+            <div class="form__control-description" app-type size="T200" weight="light" marginBottom>
+              CSS Easing function to use on reset
+            </div>
+            <div class="form__control-input">
+              <mat-form-field appearance="legacy" hideRequiredMarker aria-labelledby="easing-label">
+                <select matNativeControl required formControlName="easing">
+                  <option value="linear">linear</option>
+                  <option value="ease">ease</option>
+                  <option value="ease-in">ease-in</option>
+                  <option value="ease-out">ease-out</option>
+                  <option value="ease-in-out">ease-in-out</option>
+                  <option value="cubic-bezier(.03,.98,.52,.99)">cubic-bezier(0.03, 0.98, 0.52, 0.99)</option>
+                </select>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="playground__preview">
+    <div class="credit-card" ngTilt
+         [maxTilt]="configuratorForm.get('maxTilt')!.value | toNumber"
+         [perspective]="configuratorForm.get('perspective')!.value | toNumber"
+         [scale]="configuratorForm.get('scale')!.value | toNumber"
+         [speed]="configuratorForm.get('speed')!.value | toNumber"
+         [reset]="configuratorForm.get('reset')!.value | toBoolean"
+
+    >
+      <div class="credit-card__number"
+           ngTiltParallax
+           [distance]="configuratorForm.get('distance')!.value | toNumber">
+        1234 5678 912 3456
+      </div>
+      <div class="credit-card__name"
+           ngTiltParallax
+           [distance]="configuratorForm.get('distance')!.value | toNumber">
+        MR J Bloggs
+      </div>
+      <div class="credit-card__sort-code"
+           ngTiltParallax
+           [distance]=" configuratorForm.get('distance')!.value | toNumber">
+        12-34-56
+      </div>
+      <div class="credit-card__account-no"
+           ngTiltParallax
+           [distance]="configuratorForm.get('distance')!.value | toNumber">
+        12345678
+      </div>
+      <div class="credit-card__logo"
+           ngTiltParallax
+           [distance]="configuratorForm.get('distance')!.value | toNumber">
+        <fa-icon [icon]="faCcMastercard"></fa-icon>
+      </div>
+    </div>
+  </div>
+
+<!--  <div class="playground__dom">-->
+<!--    a-->
+<!--  </div>-->
+</div>

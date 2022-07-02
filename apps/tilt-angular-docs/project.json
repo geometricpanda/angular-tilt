@@ -1,0 +1,103 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/tilt-angular-docs/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/tilt-angular-docs",
+        "index": "apps/tilt-angular-docs/src/index.html",
+        "main": "apps/tilt-angular-docs/src/main.ts",
+        "polyfills": "apps/tilt-angular-docs/src/polyfills.ts",
+        "tsConfig": "apps/tilt-angular-docs/tsconfig.app.json",
+        "assets": [
+          "apps/tilt-angular-docs/src/favicon.ico",
+          "apps/tilt-angular-docs/src/assets",
+          {
+            "glob": "_redirects",
+            "input": "apps/tilt-angular-docs",
+            "output": "/"
+          }
+        ],
+        "styles": [
+          "apps/tilt-angular-docs/src/styles.css"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/tilt-angular-docs/src/environments/environment.ts",
+              "with": "apps/tilt-angular-docs/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "tilt-angular-docs:build:production"
+        },
+        "development": {
+          "browserTarget": "tilt-angular-docs:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "tilt-angular-docs:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/tilt-angular-docs/**/*.ts",
+          "apps/tilt-angular-docs/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/tilt-angular-docs"
+      ],
+      "options": {
+        "jestConfig": "apps/tilt-angular-docs/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

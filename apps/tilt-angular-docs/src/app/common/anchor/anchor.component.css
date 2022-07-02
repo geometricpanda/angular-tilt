@@ -1,0 +1,16 @@
+:host {
+  color: var(--color-light-yellow);
+  font-weight: var(--font-weight-bold);
+}
+
+:host:hover {
+  color: var(--color-pink)
+}
+
+:host:focus {
+  box-shadow: var(--focus-box-shadow);
+  padding: 4px;
+  margin: -4px;
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}

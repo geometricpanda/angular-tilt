@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  border: 10px solid var(--color-light-yellow);
+  width: 0;
+  height: 0;
+  transform: rotate(0.125turn);
+  overflow: visible;
+  margin: var(--spacing-2xl) auto;
+}
+
+:host:before,
+:host:after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 3px;
+  background-color: var(--color-magenta);
+}
+
+:host:before {
+  transform: rotate(-0.125turn) translateY(-36px) translateX(-121px)
+}
+
+:host:after {
+  transform: rotate(-0.125turn) translateY(-39px) translateX(57px);
+}
+
+@media (min-width: 768px) {
+  :host:before,
+  :host:after {
+    width: 200px;
+  }
+
+  :host:before {
+    transform: rotate(-0.125turn) translateY(-71px) translateX(-205px);
+  }
+
+  :host:after {
+    transform: rotate(-0.125turn) translateY(-74px) translateX(72px);
+  }
+}

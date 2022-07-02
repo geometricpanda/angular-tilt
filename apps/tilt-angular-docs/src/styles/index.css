@@ -1,0 +1,17 @@
+@import "./colors.css";
+@import "./interactive.css";
+@import "./fonts.css";
+@import "./sizes.css";
+
+body {
+  background-color: var(--color-dark-teal);
+}
+
+html, body {
+}
+
+.cdk-global-scrollblock {
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll
+}

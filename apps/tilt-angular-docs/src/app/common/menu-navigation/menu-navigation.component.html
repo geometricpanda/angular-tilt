@@ -1,0 +1,68 @@
+<div class="navigation-overlay"
+     [class.navigation-overlay--is-visible]="menuStateService.currentState | async"
+     (click)="doClose()"
+></div>
+
+<nav aria-labelledby="menu-navigation-title"
+     id="menu-navigation"
+     class="navigation"
+     tabindex="-1"
+     [attr.aria-hidden]="(menuStateService.currentState | async) ? null : true"
+     [class.navigation--is-visible]="menuStateService.currentState | async"
+     [cdkTrapFocus]="menuStateService.currentState | async"
+>
+
+  <span id="menu-navigation-title" class="navigation__title">Main Navigation</span>
+
+  <div class="navigation__controls">
+    <button
+      app-menu-close
+      (click)="doClose()"
+      [attr.tabindex]="(menuStateService.currentState | async) ? null : -1"
+    ></button>
+  </div>
+
+  <ul class="navigation__links">
+    <li class="navigation__link"
+        *ngFor="let link of links"
+        [ngSwitch]="link.type">
+
+      <ng-container
+        *ngSwitchCase="'link'"
+        [ngTemplateOutlet]="hyperlink"
+        [ngTemplateOutletContext]="link"
+      ></ng-container>
+
+      <ng-container
+        *ngSwitchDefault
+        [ngTemplateOutlet]="routerlink"
+        [ngTemplateOutletContext]="link"
+      ></ng-container>
+
+    </li>
+  </ul>
+</nav>
+
+<ng-template #hyperlink let-title="title" let-icon="icon" let-url="url">
+  <a class="link"
+     [href]="url"
+     target="_blank"
+     [attr.tabindex]="(menuStateService.currentState | async) ? null : -1">
+    <fa-icon [icon]="icon" class="link__icon"></fa-icon>
+    {{title}}
+  </a>
+</ng-template>
+
+<ng-template #routerlink let-title="title" let-icon="icon" let-url="url">
+  <a class="link"
+     [routerLink]="url"
+     routerLinkActive="link--active"
+     ariaCurrentWhenActive="page"
+     [routerLinkActiveOptions]="{exact:true}"
+     [attr.tabindex]="(menuStateService.currentState | async) ? null : -1">
+    <fa-icon [icon]="icon" class="link__icon"></fa-icon>
+    {{title}}
+  </a>
+</ng-template>
+
+

@@ -1,0 +1,36 @@
+.hero {
+  background-color: var(--color-dark-blue);
+}
+
+.hero__content {
+  padding: var(--spacing-gutter);
+  max-width: var(--container-max-width);
+  margin: auto;
+}
+
+.hero__decoration {
+  --hero-color-previous: var(--color-grey);
+  --hero-color-current: var(--color-dark-blue);
+
+  --fill-top: var(--color-grey);
+  --fill-bottom: var(--color-dark-blue);
+  --hex-bottom: var(--color-grey);
+  --hex-top: var(--color-dark-blue);
+
+  background: radial-gradient(circle farthest-side at 0% 50%, var(--fill-top) 23.5%, transparent 0) 21px 30px,
+  radial-gradient(circle farthest-side at 0% 50%, var(--hex-top) 24%, transparent 0) 19px 30px,
+  linear-gradient(var(--fill-top) 14%, transparent 0, transparent 85%, var(--fill-top) 0) 0 0,
+  linear-gradient(150deg, var(--fill-top) 24%, var(--hex-top) 0, var(--hex-top) 26%, transparent 0, transparent 74%, var(--hex-top) 0, var(--hex-top) 76%, var(--fill-top) 0) 0 0,
+  linear-gradient(30deg, var(--fill-top) 24%, var(--hex-top) 0, var(--hex-top) 26%, transparent 0, transparent 74%, var(--hex-top) 0, var(--hex-top) 76%, var(--fill-top) 0) 0 0,
+  linear-gradient(90deg, var(--hex-bottom) 2%, var(--fill-bottom) 0, var(--fill-bottom) 98%, var(--hex-bottom) 0%) 0 0;
+
+  background-size: 40px 60px;
+  height: 21px;
+}
+
+.hero__decoration--end {
+  --fill-top: var(--color-dark-blue);
+  --hex-top: var(--color-dark-teal);
+  --fill-bottom: var(--color-dark-teal);
+  --hex-bottom: var(--color-dark-teal);
+}
