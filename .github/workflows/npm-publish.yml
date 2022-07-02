@@ -32,7 +32,7 @@ jobs:
           name: angular-tilt
           path: dist/libs/angular-tilt
       - name: Clean temp directory
-        run: npm publish
+        run: npm publish --access public
         working-directory: dist/libs/angular-tilt
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
