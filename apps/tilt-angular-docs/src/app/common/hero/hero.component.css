@@ -1,0 +1,25 @@
+.hero {
+  background-color: var(--color-dark-blue);
+}
+
+.hero__content {
+  padding: var(--spacing-gutter);
+  max-width: var(--container-max-width);
+  margin: auto;
+}
+
+.hero__decoration {
+  --hero-color-previous: var(--color-grey);
+  --hero-color-current: var(--color-dark-blue);
+
+  height: 40px;
+  background: linear-gradient(-135deg, var(--hero-color-previous) 20px, transparent 0) 0 20px,
+  linear-gradient(135deg, var(--hero-color-previous) 20px, var(--hero-color-current) 0) 0 20px;
+  background-size: 40px 40px;
+  background-position: center bottom;
+}
+
+.hero__decoration--end {
+  --hero-color-previous: var(--color-dark-blue);
+  --hero-color-current: var(--color-dark-teal);
+}

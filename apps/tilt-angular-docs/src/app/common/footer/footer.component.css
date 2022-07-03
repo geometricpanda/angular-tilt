@@ -55,7 +55,7 @@
   font-family: var(--font-family);
   font-weight: var(--font-weight-regular);
   color: var(--color-white);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-T200);
 }
 
 .footer__trim {
@@ -69,7 +69,7 @@
   font-family: var(--font-family);
   font-weight: var(--font-weight-bold);
   color: var(--color-light-yellow);
-  font-size: var(--font-size-regular);
+  font-size: var(--font-size-T300);
   text-decoration: none;
   padding: 2px;
   margin: -2px;

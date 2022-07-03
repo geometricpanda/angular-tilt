@@ -11,7 +11,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 24px var(--spacing-gutter) 12px;
+  padding: 55px var(--spacing-gutter) 0;
   gap: var(--spacing-gap);
   max-width: var(--container-max-width);
   margin: auto;

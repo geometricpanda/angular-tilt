@@ -1,13 +1,19 @@
 :root {
   --button-border-radius: 4px;
-  --container-max-width: 900px;
+  --container-max-width: 1000px;
 
-  --spacing-gutter: 16px;
+  --spacing-gutter: 24px;
   --spacing-gap: 16px;
 
   --spacing-xs: 0.5rem;
   --spacing-sm: 0.75rem;
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
+}
 
+@media (min-width: 48em) {
+  :root {
+    --spacing-gutter: 48px;
+    --spacing-gap: 24px;
+  }
 }

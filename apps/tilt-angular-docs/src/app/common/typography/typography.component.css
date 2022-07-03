@@ -1,0 +1,50 @@
+:host(.type) {
+  font-family: var(--font-family);
+  line-height: 1em;
+  color: var(--color-white);
+}
+
+:host(.type--weight-light) {
+  font-weight: var(--font-weight-light);
+}
+
+:host(.type--weight-regular) {
+  font-weight: var(--font-weight-regular);
+}
+
+:host(.type--weight-bold) {
+  font-weight: var(--font-weight-bold);
+}
+
+:host(.type--weight-heavy) {
+  font-weight: var(--font-weight-heavy);
+}
+
+:host(.type--size-T200) {
+  font-size: var(--font-size-T200);
+}
+
+:host(.type--size-T300) {
+  font-size: var(--font-size-T300);
+}
+
+:host(.type--size-T400) {
+  font-size: var(--font-size-T400);
+}
+
+:host(.type--size-T500) {
+  font-size: var(--font-size-T500);
+}
+
+:host(.type--size-T600) {
+  font-size: var(--font-size-T600);
+}
+
+:host(.type--size-T700){
+  font-size: var(--font-size-T700);
+}
+
+:host ::ng-deep > a {
+  color: var(--color-light-yellow);
+  font-weight: var(--font-weight-bold);
+}

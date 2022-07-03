@@ -2,8 +2,13 @@
   --font-family: 'Josefin Sans', sans-serif;
   --font-weight-light: 300;
   --font-weight-regular: 400;
-  --font-weight-bold: 600;
+  --font-weight-bold: 500;
+  --font-weight-heavy: 700;
 
-  --font-size-small: 1rem;
-  --font-size-regular: 1.25rem;
+  --font-size-T200: 1rem;
+  --font-size-T300: 1.25rem;
+  --font-size-T400: 2rem;
+  --font-size-T500: 2.5rem;
+  --font-size-T600: 3rem;
+  --font-size-T700: 3.5rem;
 }
