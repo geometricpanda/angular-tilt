@@ -1,0 +1,8 @@
+@import "./colors.css";
+@import "./interactive.css";
+@import "./fonts.css";
+@import "./sizes.css";
+
+body {
+  background-color: var(--color-dark-teal);
+}

@@ -1,0 +1,49 @@
+<nav #nav
+     cdkTrapFocus
+     aria-labelledby="menu-navigation-title"
+     id="menu-navigation"
+     class="navigation"
+     [class.navigation--is-visible]="menuStateService.currentState | async"
+     tabindex="-1"
+>
+
+  <span class="navigation__title">Main Navigation</span>
+
+  <div class="navigation__controls">
+    <button app-menu-close (click)="doClose()"></button>
+  </div>
+
+  <ul class="navigation__links">
+    <li class="navigation__link"
+        *ngFor="let link of links"
+        [ngSwitch]="link.type">
+
+      <ng-container
+        *ngSwitchCase="'link'"
+        [ngTemplateOutlet]="hyperlink"
+        [ngTemplateOutletContext]="link"
+      ></ng-container>
+
+      <ng-container
+        *ngSwitchDefault
+        [ngTemplateOutlet]="routerlink"
+        [ngTemplateOutletContext]="link"
+      ></ng-container>
+
+    </li>
+  </ul>
+</nav>
+
+<ng-template #hyperlink let-title="title" let-icon="icon" let-url="url">
+  <a class="link" [href]="url" target="_blank">
+    <fa-icon [icon]="icon" class="link__icon"></fa-icon>
+    {{title}}
+  </a>
+</ng-template>
+
+<ng-template #routerlink let-title="title" let-icon="icon" let-url="url">
+  <a class="link" [routerLink]="url" target="_blank">
+    <fa-icon [icon]="icon" class="link__icon"></fa-icon>
+    {{title}}
+  </a>
+</ng-template>

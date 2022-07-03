@@ -1,0 +1,30 @@
+.header {
+  padding: 24px var(--spacing-gutter) 12px;
+  background-color: var(--color-grey);
+  background-image: url("../../../assets/damask.svg");
+  background-size: 400px;
+  background-repeat: repeat-x;
+  background-position: 0 -300px;
+}
+
+.header__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-gap);
+  max-width: var(--container-max-width);
+  margin: auto;
+}
+
+.header__logo:focus {
+  box-shadow: var(--focus-box-shadow);
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.header__logo-img {
+  width: 100px;
+  height: 100px;
+  aspect-ratio: 1/1;
+}

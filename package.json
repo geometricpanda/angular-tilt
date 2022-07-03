@@ -5,13 +5,14 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
-    "start": "nx serve tilt-app",
-    "build": "nx build tilt-app",
+    "start": "nx run tilt-angular-docs:serve",
+    "build": "nx run tilt-angular-docs:build",
     "test": "nx test"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~14.0.0",
+    "@angular/cdk": "^14.0.4",
     "@angular/common": "~14.0.0",
     "@angular/compiler": "~14.0.0",
     "@angular/core": "~14.0.0",
@@ -19,6 +20,10 @@
     "@angular/platform-browser": "~14.0.0",
     "@angular/platform-browser-dynamic": "~14.0.0",
     "@angular/router": "~14.0.0",
+    "@fortawesome/angular-fontawesome": "^0.11.1",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@nrwl/angular": "14.3.6",
     "modern-css-reset": "^1.4.0",
     "rxjs": "~7.4.0",
