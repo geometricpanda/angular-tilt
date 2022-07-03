@@ -6,7 +6,6 @@
   width: 18rem;
   max-width: 100vw;
   background-color: var(--color-dark-purple);
-  box-shadow: 10px 0 8px -6px rgba(0, 0, 0, 0.5);
   padding: var(--spacing-gutter);
   transform: translateX(-100%);
   transition: transform 300ms ease-in-out;
@@ -21,6 +20,7 @@
 
 .navigation--is-visible {
   transform: translateX(0);
+  box-shadow: 10px 0 8px -6px rgba(0, 0, 0, 0.5);
 }
 
 .navigation__controls {

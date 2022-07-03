@@ -5,6 +5,7 @@ import {AppRouterModule} from './app-router.module';
 import {AppComponent} from './app.component';
 import {HeaderModule} from './common/header';
 import {MenuNavigationModule} from './common/menu-navigation';
+import {FooterModule} from './common/footer';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {MenuNavigationModule} from './common/menu-navigation';
     AppRouterModule,
     HeaderModule,
     MenuNavigationModule,
+    FooterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

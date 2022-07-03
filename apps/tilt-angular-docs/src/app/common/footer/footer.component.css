@@ -1,0 +1,82 @@
+.footer {
+  background-color: var(--color-dark-magenta);
+}
+
+.footer__nav {
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--spacing-gutter);
+  gap: var(--spacing-gap);
+  max-width: var(--container-max-width);
+  margin: auto;
+}
+
+.footer__nav-title {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.footer__links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-gap);
+  list-style: none;
+  padding: 0;
+}
+
+@media (min-width: 48em ) {
+  .footer__links {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 64em ) {
+  .footer__links {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.footer__link {
+
+}
+
+.footer__legals {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-gutter);
+  gap: var(--spacing-gap);
+  max-width: var(--container-max-width);
+  margin: 0 auto var(--spacing-xs);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-white);
+  font-size: var(--font-size-small);
+}
+
+.footer__trim {
+  background-image: url("../../../assets/damask.svg");
+  background-size: 400px;
+  background-repeat: repeat-x;
+  padding-top: 48px;
+}
+
+.link {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-light-yellow);
+  font-size: var(--font-size-regular);
+  text-decoration: none;
+  padding: 2px;
+  margin: -2px;
+}
+
+.link:focus {
+  box-shadow: var(--focus-box-shadow);
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}

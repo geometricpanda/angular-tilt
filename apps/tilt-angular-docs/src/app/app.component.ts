@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MenuItems} from './common/menu-navigation/menu-navigation.interface';
+import {MenuItems} from './common/navigation.interface';
 import {faHouseChimney} from '@fortawesome/free-solid-svg-icons/faHouseChimney';
 import {faBook} from '@fortawesome/free-solid-svg-icons/faBook';
 import {faImage} from '@fortawesome/free-solid-svg-icons/faImage';

@@ -1,5 +1,4 @@
 .header {
-  padding: 24px var(--spacing-gutter) 12px;
   background-color: var(--color-grey);
   background-image: url("../../../assets/damask.svg");
   background-size: 400px;
@@ -12,6 +11,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 24px var(--spacing-gutter) 12px;
   gap: var(--spacing-gap);
   max-width: var(--container-max-width);
   margin: auto;
