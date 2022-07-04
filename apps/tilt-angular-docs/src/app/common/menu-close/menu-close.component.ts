@@ -17,4 +17,7 @@ export class MenuCloseComponent {
   @HostBinding('class.menu-close')
   private readonly hbClassMenuClose = true;
 
+  @HostBinding('attr.aria-label')
+  private readonly hbAttrMenuClose = 'Close Main Menu'
+
 }

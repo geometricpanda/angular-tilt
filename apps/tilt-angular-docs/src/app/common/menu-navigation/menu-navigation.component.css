@@ -1,3 +1,5 @@
+
+
 .navigation {
   position: fixed;
   top: 0;
@@ -6,14 +8,32 @@
   width: 18rem;
   max-width: 100vw;
   background-color: var(--color-dark-purple);
-  padding: var(--spacing-gutter);
+  padding: 24px;
   transform: translateX(-100%);
   transition: transform 300ms ease-in-out;
   will-change: transform;
+  z-index: 9999;
+}
+
+.navigation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--color-dark-blue);
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease-in-out;
+}
+
+.navigation-overlay--is-visible {
+  opacity: 0.8;
+  pointer-events: all;
 }
 
 .navigation:focus {
-  box-shadow: var(--focus-box-shadow-inset);
   outline: var(--focus-outline);
   outline-offset: calc(var(--focus-outline-offset) * -1);
 }
@@ -64,5 +84,6 @@
 }
 
 .link__icon {
+  width: 27px;
   color: var(--color-white);
 }

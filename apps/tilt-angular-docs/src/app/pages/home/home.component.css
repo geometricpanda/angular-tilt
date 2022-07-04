@@ -27,15 +27,19 @@
 .angular-tilt {
   display: flex;
   width: 100%;
-  background: linear-gradient(153deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  background: linear-gradient(153deg, var(--color-dark-teal) 0%, var(--color-light-teal) 100%);
+  background-color: var(--color-dark-teal);
   aspect-ratio: 4/2.5;
   border-radius: 24px;
   justify-content: center;
   align-items: center;
-  color: var(--color-dark-purple);
   max-width: 250px;
   margin: auto;
   text-align: center;
+}
+
+.angular-tilt span {
+  color: var(--color-white);
 }
 
 .container {

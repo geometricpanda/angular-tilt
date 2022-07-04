@@ -1,6 +1,6 @@
 :host(.type) {
   font-family: var(--font-family);
-  line-height: 1em;
+  line-height: 1.2em;
   color: var(--color-white);
 }
 

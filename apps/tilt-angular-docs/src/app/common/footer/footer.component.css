@@ -25,6 +25,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-gap);
+  margin: var(--spacing-lg) 0;
   list-style: none;
   padding: 0;
 }
@@ -51,7 +52,7 @@
   padding: 0 var(--spacing-gutter);
   gap: var(--spacing-gap);
   max-width: var(--container-max-width);
-  margin: 0 auto var(--spacing-xs);
+  margin: var(--spacing-lg) auto 0;
   font-family: var(--font-family);
   font-weight: var(--font-weight-regular);
   color: var(--color-white);
@@ -62,15 +63,16 @@
   background-image: url("../../../assets/damask.svg");
   background-size: 400px;
   background-repeat: repeat-x;
-  padding-top: 48px;
+  padding-top: 50px;
+  margin-top: var(--spacing-lg);
 }
 
 .link {
   font-family: var(--font-family);
   font-weight: var(--font-weight-bold);
-  color: var(--color-light-yellow);
+  color: var(--color-white);
   font-size: var(--font-size-T300);
-  text-decoration: none;
+  text-decoration-thickness: 2px;
   padding: 2px;
   margin: -2px;
 }

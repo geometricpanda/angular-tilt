@@ -1,3 +1,8 @@
+<div class="navigation-overlay"
+     [class.navigation-overlay--is-visible]="menuStateService.currentState | async"
+     (click)="doClose()"
+></div>
+
 <nav #nav
      [cdkTrapFocus]="menuStateService.currentState | async"
      aria-labelledby="menu-navigation-title"
@@ -7,7 +12,7 @@
      tabindex="-1"
 >
 
-  <span class="navigation__title">Main Navigation</span>
+  <span id="menu-navigation-title" class="navigation__title">Main Navigation</span>
 
   <div class="navigation__controls">
     <button
@@ -51,9 +56,10 @@
 <ng-template #routerlink let-title="title" let-icon="icon" let-url="url">
   <a class="link"
      [routerLink]="url"
-     target="_blank"
      [attr.tabindex]="(menuStateService.currentState | async) ? null : -1">
     <fa-icon [icon]="icon" class="link__icon"></fa-icon>
     {{title}}
   </a>
 </ng-template>
+
+
