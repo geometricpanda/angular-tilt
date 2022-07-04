@@ -1,6 +1,6 @@
 :host {
   display: block;
-  border: 12px solid var(--color-light-yellow);
+  border: 10px solid var(--color-light-yellow);
   width: 0;
   height: 0;
   transform: rotate(0.125turn);
@@ -18,11 +18,11 @@
 }
 
 :host:before {
-  transform: rotate(-0.125turn) translateY(-36px) translateX(-126px)
+  transform: rotate(-0.125turn) translateY(-36px) translateX(-121px)
 }
 
 :host:after {
-  transform: rotate(-0.125turn) translateY(-39px) translateX(62px);
+  transform: rotate(-0.125turn) translateY(-39px) translateX(57px);
 }
 
 @media (min-width: 768px) {
@@ -32,10 +32,10 @@
   }
 
   :host:before {
-    transform: rotate(-0.125turn) translateY(-71px) translateX(-210px);
+    transform: rotate(-0.125turn) translateY(-71px) translateX(-205px);
   }
 
   :host:after {
-    transform: rotate(-0.125turn) translateY(-74px) translateX(77px);
+    transform: rotate(-0.125turn) translateY(-74px) translateX(72px);
   }
 }
