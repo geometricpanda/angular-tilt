@@ -7,6 +7,7 @@
      id="menu-navigation"
      class="navigation"
      tabindex="-1"
+     [attr.aria-hidden]="(menuStateService.currentState | async) ? null : true"
      [class.navigation--is-visible]="menuStateService.currentState | async"
      [cdkTrapFocus]="menuStateService.currentState | async"
 >
