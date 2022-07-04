@@ -1,5 +1,5 @@
 .hero {
-  background-color: var(--color-dark-magenta);
+  background-color: var(--color-dark-blue);
 }
 
 .hero__content {
@@ -9,8 +9,8 @@
 }
 
 .hero__decoration {
-  --hero-color-previous: var(--color-magenta-grey);
-  --hero-color-current: var(--color-dark-magenta);
+  --hero-color-previous: var(--color-grey);
+  --hero-color-current: var(--color-dark-blue);
 
   height: 40px;
   background: linear-gradient(-135deg, var(--hero-color-previous) 20px, transparent 0) 0 20px,
@@ -20,6 +20,6 @@
 }
 
 .hero__decoration--end {
-  --hero-color-previous: var(--color-dark-magenta);
+  --hero-color-previous: var(--color-dark-blue);
   --hero-color-current: var(--color-dark-teal);
 }

@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--color-magenta-grey);
+  background-color: var(--color-grey);
   background-image: url("../../../assets/damask.svg");
   background-size: 400px;
   background-repeat: repeat-x;

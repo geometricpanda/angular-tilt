@@ -5,9 +5,9 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 18rem;
+  width: 20rem;
   max-width: 100vw;
-  background-color: var(--color-magenta-grey);
+  background-color: var(--color-dark-magenta);
   padding: 24px;
   transform: translateX(-110%);
   box-shadow: 10px 0 8px -6px rgba(0, 0, 0, 0.5);
@@ -23,7 +23,7 @@
 }
 
 .navigation::-webkit-scrollbar-thumb {
-  background: var(--color-magenta);
+  background: var(--color-white);
   border-radius: 20px;
 }
 

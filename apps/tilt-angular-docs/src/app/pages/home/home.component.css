@@ -38,8 +38,8 @@
 .angular-tilt {
   display: flex;
   width: 100%;
-  background: linear-gradient(153deg, var(--color-teal) 0%, var(--color-dark-blue) 100%);
-  background-color: var(--color-dark-teal);
+  background: linear-gradient(153deg, var(--color-dark-magenta) 0%, var(--color-blue) 100%);
+  background-color: var(--color-dark-magenta);
   aspect-ratio: 4 / 3;
   border-radius: 24px;
   justify-content: center;
