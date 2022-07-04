@@ -86,10 +86,15 @@
   font-size: 1.3rem;
   text-decoration: none;
   padding: 6px;
+  transition: color 150ms ease-out;
 }
 
 .link--active {
   text-decoration: underline;
+}
+
+.link:hover {
+  color: var(--color-light-yellow);
 }
 
 .link:focus {
@@ -100,5 +105,4 @@
 
 .link__icon {
   width: 1.5rem;
-  color: var(--color-white);
 }

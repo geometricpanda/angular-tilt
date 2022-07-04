@@ -71,8 +71,18 @@
   color: var(--color-white);
   font-size: var(--font-size-T300);
   text-decoration-thickness: 2px;
+  text-decoration: none;
   padding: 2px;
   margin: -2px;
+  transition: color 150ms ease-out;
+}
+
+.link--active {
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: var(--color-light-yellow);
 }
 
 .link:focus {

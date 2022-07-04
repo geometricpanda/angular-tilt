@@ -9,7 +9,10 @@
         <a *ngSwitchCase="'link'" class="link" [href]="link.url" target="_blank">{{link.title}}</a>
         <a *ngSwitchDefault
            class="link"
-           [routerLink]="link.url">
+           [routerLink]="link.url"
+           routerLinkActive="link--active"
+           ariaCurrentWhenActive="page"
+           [routerLinkActiveOptions]="{exact:false}">
           {{link.title}}</a>
       </li>
     </ul>
