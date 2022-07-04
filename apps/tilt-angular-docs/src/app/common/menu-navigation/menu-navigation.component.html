@@ -3,13 +3,12 @@
      (click)="doClose()"
 ></div>
 
-<nav #nav
-     [cdkTrapFocus]="menuStateService.currentState | async"
-     aria-labelledby="menu-navigation-title"
+<nav aria-labelledby="menu-navigation-title"
      id="menu-navigation"
      class="navigation"
-     [class.navigation--is-visible]="menuStateService.currentState | async"
      tabindex="-1"
+     [class.navigation--is-visible]="menuStateService.currentState | async"
+     [cdkTrapFocus]="menuStateService.currentState | async"
 >
 
   <span id="menu-navigation-title" class="navigation__title">Main Navigation</span>

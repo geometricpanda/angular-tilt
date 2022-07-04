@@ -2,6 +2,8 @@ import {Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild
 import {MenuItems} from '../navigation.interface';
 import {filter, Subscription} from 'rxjs';
 import {MenuStateService} from '../../services/menu-state.service';
+import {NavigationEnd, Router} from '@angular/router';
+import {MenuCloseComponent} from '../menu-close';
 
 @Component({
   selector: 'app-menu-navigation',
@@ -10,10 +12,11 @@ import {MenuStateService} from '../../services/menu-state.service';
 })
 export class MenuNavigationComponent implements OnInit, OnDestroy {
 
-  menuState$?: Subscription;
+  @ViewChild(MenuCloseComponent, {static: true})
+  closeButton!: MenuCloseComponent;
 
-  @ViewChild('nav', {static: true})
-  $nav!: ElementRef<HTMLElement>;
+  menuState$?: Subscription;
+  routeChange$?: Subscription;
 
   @Input() links: MenuItems = [];
 
@@ -24,6 +27,7 @@ export class MenuNavigationComponent implements OnInit, OnDestroy {
 
   constructor(
     public menuStateService: MenuStateService,
+    public router: Router,
   ) {
   }
 
@@ -31,7 +35,12 @@ export class MenuNavigationComponent implements OnInit, OnDestroy {
     this.menuState$ = this.menuStateService
       .currentState
       .pipe(filter((state) => state))
-      .subscribe(() => this.$nav.nativeElement.focus())
+      .subscribe(() => this.closeButton.focus());
+
+    this.routeChange$ = this.router
+      .events
+      .pipe(filter(e => e instanceof NavigationEnd))
+      .subscribe(() => this.menuStateService.setState(false));
   }
 
   ngOnDestroy(): void {

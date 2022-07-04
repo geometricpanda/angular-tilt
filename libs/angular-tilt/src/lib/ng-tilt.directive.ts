@@ -14,6 +14,8 @@ import {NgTiltMousePositions, NgTiltValues} from './ng-tilt.interface';
 })
 export class NgTiltDirective implements OnInit {
 
+  public isActive = false;
+
   private _timeout?: number;
   private _mousePositions!: NgTiltMousePositions;
   private _ticking = false;
@@ -50,12 +52,14 @@ export class NgTiltDirective implements OnInit {
   private onMouseEnter() {
     this._ticking = false;
     this.setTransition();
+    this.isActive = true;
   }
 
   @HostListener('mousemove', ['$event'])
   private onMouseMove($event: MouseEvent) {
     this._mousePositions = this.getMousePositions($event);
     this.requestTick();
+
   }
 
   @HostListener('mouseleave')
@@ -63,7 +67,8 @@ export class NgTiltDirective implements OnInit {
     if (this.reset) {
       this._resetting = true;
       this.setTransition();
-      this.requestTick()
+      this.requestTick();
+      this.isActive = false;
     }
   }
 

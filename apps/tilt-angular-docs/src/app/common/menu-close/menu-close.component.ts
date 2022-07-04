@@ -1,4 +1,4 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component, ElementRef, HostBinding} from '@angular/core';
 import {faTimes} from '@fortawesome/free-solid-svg-icons/faTimes';
 
 
@@ -18,6 +18,13 @@ export class MenuCloseComponent {
   private readonly hbClassMenuClose = true;
 
   @HostBinding('attr.aria-label')
-  private readonly hbAttrMenuClose = 'Close Main Menu'
+  private readonly hbAttrMenuClose = 'Close Main Menu';
+
+  constructor(private elRef: ElementRef<HTMLButtonElement>) {
+  }
+
+  focus() {
+    this.elRef.nativeElement.focus();
+  }
 
 }
