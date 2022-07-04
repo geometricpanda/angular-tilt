@@ -1,4 +1,5 @@
-import {Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, HostListener, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+
 import {MenuItems} from '../navigation.interface';
 import {filter, Subscription} from 'rxjs';
 import {MenuStateService} from '../../services/menu-state.service';

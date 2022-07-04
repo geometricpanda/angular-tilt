@@ -6,3 +6,9 @@
 body {
   background-color: var(--color-dark-teal);
 }
+
+.cdk-global-scrollblock {
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll
+}

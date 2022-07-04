@@ -1,4 +1,5 @@
 import {Component, HostBinding, Input} from '@angular/core';
+import {coerceBooleanProperty} from '@angular/cdk/coercion';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -61,6 +62,12 @@ export class TypographyComponent {
     return this.size === 'T700';
   }
 
+  @HostBinding('class.type--margin-bottom')
+  private get hbClassTypeMarginBottom(): boolean {
+    return coerceBooleanProperty(this.marginBottom);
+  }
+
   @Input() weight: 'light' | 'regular' | 'bold' | 'heavy' = 'regular'
+  @Input() marginBottom: boolean | string = false;
   @Input() size: 'T200' | 'T300' | 'T400' | 'T500' | 'T600' | 'T700' = 'T300';
 }

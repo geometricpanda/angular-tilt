@@ -1,10 +1,12 @@
 <div class="footer">
 
+  <div class="footer__decoration"></div>
+
   <nav class="footer__nav">
     <h2 class="footer__nav-title">Site Links</h2>
     <ul class="footer__links">
       <li class="footer__link" *ngFor="let link of links" [ngSwitch]="link.type">
-        <a *ngSwitchCase="'link'" class="link" [href]="link.url">{{link.title}}</a>
+        <a *ngSwitchCase="'link'" class="link" [href]="link.url" target="_blank">{{link.title}}</a>
         <a *ngSwitchDefault class="link" [routerLink]="link.url">{{link.title}}</a>
       </li>
     </ul>

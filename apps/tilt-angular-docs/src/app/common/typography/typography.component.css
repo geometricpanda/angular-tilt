@@ -1,6 +1,6 @@
 :host(.type) {
   font-family: var(--font-family);
-  line-height: 1.2em;
+  line-height: 1.8em;
   color: var(--color-white);
 }
 
@@ -30,18 +30,26 @@
 
 :host(.type--size-T400) {
   font-size: var(--font-size-T400);
+  line-height: 1.5em;
 }
 
 :host(.type--size-T500) {
   font-size: var(--font-size-T500);
+  line-height: 1.5em;
 }
 
 :host(.type--size-T600) {
   font-size: var(--font-size-T600);
+  line-height: 1.5em;
 }
 
 :host(.type--size-T700){
   font-size: var(--font-size-T700);
+  line-height: 1.5em;
+}
+
+:host(.type--margin-bottom){
+  margin-bottom: 1rem;
 }
 
 :host ::ng-deep > a {

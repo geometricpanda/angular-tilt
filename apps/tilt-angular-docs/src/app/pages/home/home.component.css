@@ -5,13 +5,18 @@
 
 @media (min-width: 48em) {
   .hero {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 64em) {
+  .hero {
     grid-template-columns: 2fr 1fr;
   }
 }
 
 .hero__text {
   display: flex;
-  gap: var(--spacing-gap);
   flex-direction: column;
   justify-content: center;
   text-align: center;
@@ -24,28 +29,33 @@
   }
 }
 
+.hero__media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .angular-tilt {
   display: flex;
   width: 100%;
   background: linear-gradient(153deg, var(--color-dark-teal) 0%, var(--color-light-teal) 100%);
   background-color: var(--color-dark-teal);
-  aspect-ratio: 4/2.5;
+  aspect-ratio: 4 / 3;
   border-radius: 24px;
   justify-content: center;
   align-items: center;
-  max-width: 250px;
   margin: auto;
   text-align: center;
+  padding: var(--spacing-md);
 }
 
 .angular-tilt span {
+  line-height: 1em;
   color: var(--color-white);
 }
 
 .container {
-  display: grid;
-  gap: var(--spacing-md);
   max-width: var(--container-max-width);
   padding: 0 var(--spacing-gutter);
-  margin: var(--spacing-lg) auto;
+  margin: var(--spacing-2xl) auto;
 }
