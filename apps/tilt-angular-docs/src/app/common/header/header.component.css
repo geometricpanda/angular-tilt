@@ -1,10 +1,11 @@
 .header {
-  background-color: var(--color-grey);
+  background-color: var(--color-magenta-grey);
   background-image: url("../../../assets/damask.svg");
   background-size: 400px;
   background-repeat: repeat-x;
   background-position: 0 -300px;
 }
+
 
 .header__container {
   display: flex;
@@ -15,6 +16,9 @@
   gap: var(--spacing-gap);
   max-width: var(--container-max-width);
   margin: auto;
+}
+
+.header__logo {
 }
 
 .header__logo:focus {

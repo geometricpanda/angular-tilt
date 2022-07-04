@@ -55,6 +55,9 @@
 <ng-template #routerlink let-title="title" let-icon="icon" let-url="url">
   <a class="link"
      [routerLink]="url"
+     routerLinkActive="link--active"
+     ariaCurrentWhenActive="page"
+     [routerLinkActiveOptions]="{exact:false}"
      [attr.tabindex]="(menuStateService.currentState | async) ? null : -1">
     <fa-icon [icon]="icon" class="link__icon"></fa-icon>
     {{title}}
