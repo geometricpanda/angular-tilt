@@ -1,4 +1,4 @@
-name: release
+name: Build Libraries and Release to NPM
 
 on:
   - workflow_dispatch

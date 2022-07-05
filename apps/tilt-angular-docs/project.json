@@ -9,7 +9,7 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/apps/tilt-angular-docs",
+        "outputPath": "dist/apps/tilt-angular-docs/browser",
         "index": "apps/tilt-angular-docs/src/index.html",
         "main": "apps/tilt-angular-docs/src/main.ts",
         "polyfills": "apps/tilt-angular-docs/src/polyfills.ts",
@@ -97,6 +97,62 @@
         "jestConfig": "apps/tilt-angular-docs/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "server": {
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/apps/tilt-angular-docs/server",
+        "main": "apps/tilt-angular-docs/src/ssr.server.ts",
+        "tsConfig": "apps/tilt-angular-docs/tsconfig.server.json"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media",
+          "fileReplacements": [
+            {
+              "replace": "apps/tilt-angular-docs/src/environments/environment.ts",
+              "with": "apps/tilt-angular-docs/src/environments/environment.prod.ts"
+            }
+          ]
+        },
+        "development": {
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-ssr": {
+      "executor": "@nguniversal/builders:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "tilt-angular-docs:build:development",
+          "serverTarget": "tilt-angular-docs:server:development"
+        },
+        "production": {
+          "browserTarget": "tilt-angular-docs:build:production",
+          "serverTarget": "tilt-angular-docs:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "prerender": {
+      "executor": "@nguniversal/builders:prerender",
+      "options": {
+        "routesFile": "apps/tilt-angular-docs/routes.txt"
+      },
+      "configurations": {
+        "development": {
+          "browserTarget": "tilt-angular-docs:build:development",
+          "serverTarget": "tilt-angular-docs:server:development"
+        },
+        "production": {
+          "browserTarget": "tilt-angular-docs:build:production",
+          "serverTarget": "tilt-angular-docs:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
     }
   },
   "tags": []
