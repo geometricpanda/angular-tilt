@@ -1,4 +1,6 @@
 {
   "extends": ["@commitlint/config-angular"],
-  "rules": {}
+  "rules": {
+    "header-max-length": [2, "always", 120]
+  }
 }

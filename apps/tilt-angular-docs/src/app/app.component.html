@@ -1,12 +1,11 @@
-<app-header [attr.aria-hidden]="(modalityService.currentState | async) ? true : null">
+<app-header appModality>
 </app-header>
 
 <app-menu-navigation [links]="links"></app-menu-navigation>
 
-<main id="main" [attr.aria-hidden]="(modalityService.currentState | async) ? true : null">
+<main id="main" appModality>
   <router-outlet></router-outlet>
 </main>
 
-<app-footer [attr.aria-hidden]="(modalityService.currentState | async) ? true : null"
-            [links]="links">
+<app-footer appModality [links]="links">
 </app-footer>
