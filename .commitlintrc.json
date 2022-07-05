@@ -1,6 +1,13 @@
 {
-  "extends": ["@commitlint/config-angular"],
+  "extends": [
+    "@commitlint/config-angular",
+    "@commitlint/config-nx-scopes"
+  ],
   "rules": {
-    "header-max-length": [2, "always", 120]
+    "header-max-length": [
+      2,
+      "always",
+      120
+    ]
   }
 }
