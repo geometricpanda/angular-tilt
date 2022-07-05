@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/angular-tilt"],
+      "outputs": [
+        "dist/libs/angular-tilt"
+      ],
       "options": {
         "project": "libs/angular-tilt/ng-package.json"
       },
@@ -21,7 +23,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/angular-tilt"],
+      "outputs": [
+        "coverage/libs/angular-tilt"
+      ],
       "options": {
         "jestConfig": "libs/angular-tilt/jest.config.ts",
         "passWithNoTests": true
@@ -41,7 +45,11 @@
       "options": {
         "preset": "angular",
         "commitMessageFormat": "build(${projectName}): release version ${version}",
-        "skipCommitTypes": ["docs","ci"]
+        "skipCommitTypes": [
+          "docs",
+          "ci",
+          "build"
+        ]
       }
     }
   },
