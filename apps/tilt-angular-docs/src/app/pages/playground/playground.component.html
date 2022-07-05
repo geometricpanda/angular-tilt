@@ -16,23 +16,96 @@
         <form class="form" [formGroup]="configuratorForm">
           <h2 app-type size="T400" weight="heavy" marginBottom>Inputs</h2>
           <div class="form__control">
-            <label id="perspective-label" class="form__control-label" app-type>
-              Perspective
+            <label id="distance-label" class="form__control-label" app-type>
+              Distance
             </label>
             <div class="form__control-description" app-type size="T200" weight="light">
-              Sets the perspective of the plane to the observer.
+              Sets the parallax distance of the children.
             </div>
             <div class="form__control-value" app-type>
-              {{configuratorForm.get('perspective')!.value}}
+              {{configuratorForm.get('distance')!.value}}
             </div>
             <div class="form__control-input">
               <mat-slider
-                formControlName="perspective"
-                aria-labelledby="perspective-label"
-                [thumbLabel]="true"
-                [max]="500"
-                [min]="300"
+                formControlName="distance"
+                aria-labelledby="distance-label"
+                [max]="100"
+                [min]="0"
                 [step]="1">
+              </mat-slider>
+            </div>
+          </div>
+          <div class="form__control">
+            <label id="disable-axis-label" class="form__control-label" app-type>
+              Disable Axis
+            </label>
+            <div class="form__control-description" app-type size="T200" weight="light" marginBottom>
+              Disabled tilt from running on a given axis
+            </div>
+            <div class="form__control-input">
+              <mat-form-field appearance="legacy" hideRequiredMarker>
+                <select matNativeControl required formControlName="disableAxis" aria-labelledby="disable-axis-label">
+                  <option value="">None</option>
+                  <option value="x">X</option>
+                  <option value="y">y</option>
+                </select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form__control">
+            <label id="easing-label" class="form__control-label" app-type>
+              Easing
+            </label>
+            <div class="form__control-description" app-type size="T200" weight="light" marginBottom>
+              CSS Easing function to use on reset
+            </div>
+            <div class="form__control-input">
+              <mat-form-field appearance="legacy" hideRequiredMarker>
+                <select matNativeControl required formControlName="easing" aria-labelledby="easing-label">
+                  <option value="linear">linear</option>
+                  <option value="ease">ease</option>
+                  <option value="ease-in">ease-in</option>
+                  <option value="ease-out">ease-out</option>
+                  <option value="ease-in-out">ease-in-out</option>
+                  <option value="cubic-bezier(.03,.98,.52,.99)">cubic-bezier(0.03, 0.98, 0.52, 0.99)</option>
+                </select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form__control">
+            <label id="glare-label" class="form__control-label" app-type>
+              Glare
+            </label>
+            <div class="form__control-description" app-type size="T200" weight="light" marginBottom>
+              Configures where there is a glare or not
+            </div>
+            <div class="form__control-value" app-type>
+              {{configuratorForm.get('glare')!.value}}
+            </div>
+            <div class="form__control-input">
+              <mat-slide-toggle
+                formControlName="glare"
+                aria-labelledby="glare-label"
+              ></mat-slide-toggle>
+            </div>
+          </div>
+          <div class="form__control">
+            <label id="max-glare-label" class="form__control-label" app-type>
+              Max Glare
+            </label>
+            <div class="form__control-description" app-type size="T200" weight="light" marginBottom>
+              Configures where there is a glare or not
+            </div>
+            <div class="form__control-value" app-type>
+              {{configuratorForm.get('maxGlare')!.value}}
+            </div>
+            <div class="form__control-input">
+              <mat-slider
+                formControlName="maxGlare"
+                aria-labelledby="max-glare-label"
+                [max]="1"
+                [min]="0"
+                [step]="0.01">
               </mat-slider>
             </div>
           </div>
@@ -54,6 +127,44 @@
                 [min]="0"
                 [step]="1">
               </mat-slider>
+            </div>
+          </div>
+          <div class="form__control">
+            <label id="perspective-label" class="form__control-label" app-type>
+              Perspective
+            </label>
+            <div class="form__control-description" app-type size="T200" weight="light">
+              Sets the perspective of the plane to the observer.
+            </div>
+            <div class="form__control-value" app-type>
+              {{configuratorForm.get('perspective')!.value}}
+            </div>
+            <div class="form__control-input">
+              <mat-slider
+                formControlName="perspective"
+                aria-labelledby="perspective-label"
+                [thumbLabel]="true"
+                [max]="500"
+                [min]="300"
+                [step]="1">
+              </mat-slider>
+            </div>
+          </div>
+          <div class="form__control">
+            <label id="reset-label" class="form__control-label" app-type>
+              Reset
+            </label>
+            <div class="form__control-description" app-type size="T200" weight="light" marginBottom>
+              Resets the tilt to default on mouse out.
+            </div>
+            <div class="form__control-value" app-type>
+              {{configuratorForm.get('reset')!.value}}
+            </div>
+            <div class="form__control-input">
+              <mat-slide-toggle
+                formControlName="reset"
+                aria-labelledby="reset-label"
+              ></mat-slide-toggle>
             </div>
           </div>
           <div class="form__control">
@@ -96,77 +207,22 @@
               </mat-slider>
             </div>
           </div>
-          <div class="form__control">
-            <label id="distance-label" class="form__control-label" app-type>
-              Distance
-            </label>
-            <div class="form__control-description" app-type size="T200" weight="light">
-              Sets the parallax distance of the children.
-            </div>
-            <div class="form__control-value" app-type>
-              {{configuratorForm.get('distance')!.value}}
-            </div>
-            <div class="form__control-input">
-              <mat-slider
-                formControlName="distance"
-                aria-labelledby="distance-label"
-                [max]="100"
-                [min]="0"
-                [step]="1">
-              </mat-slider>
-            </div>
-          </div>
-          <div class="form__control">
-            <label id="reset-label" class="form__control-label" app-type>
-              Reset
-            </label>
-            <div class="form__control-description" app-type size="T200" weight="light" marginBottom>
-              Resets the tilt to default on mouse out.
-            </div>
-            <div class="form__control-value" app-type>
-              {{configuratorForm.get('reset')!.value}}
-            </div>
-            <div class="form__control-input">
-              <mat-slide-toggle
-                formControlName="reset"
-                aria-labelledby="reset-label"
-              ></mat-slide-toggle>
-
-            </div>
-          </div>
-          <div class="form__control">
-            <label id="easing-label" class="form__control-label" app-type>
-              Easing
-            </label>
-            <div class="form__control-description" app-type size="T200" weight="light" marginBottom>
-              CSS Easing function to use on reset
-            </div>
-            <div class="form__control-input">
-              <mat-form-field appearance="legacy" hideRequiredMarker aria-labelledby="easing-label">
-                <select matNativeControl required formControlName="easing">
-                  <option value="linear">linear</option>
-                  <option value="ease">ease</option>
-                  <option value="ease-in">ease-in</option>
-                  <option value="ease-out">ease-out</option>
-                  <option value="ease-in-out">ease-in-out</option>
-                  <option value="cubic-bezier(.03,.98,.52,.99)">cubic-bezier(0.03, 0.98, 0.52, 0.99)</option>
-                </select>
-              </mat-form-field>
-            </div>
-          </div>
         </form>
       </mat-card-content>
     </mat-card>
   </div>
 
   <div class="playground__preview">
-    <div class="credit-card" ngTilt
+    <div class="credit-card"
+         ngTilt
          [maxTilt]="configuratorForm.get('maxTilt')!.value | toNumber"
          [perspective]="configuratorForm.get('perspective')!.value | toNumber"
          [scale]="configuratorForm.get('scale')!.value | toNumber"
          [speed]="configuratorForm.get('speed')!.value | toNumber"
          [reset]="configuratorForm.get('reset')!.value | toBoolean"
-
+         [disableAxis]="configuratorForm.get('disableAxis')?.value | toXyString"
+         [glare]="configuratorForm.get('glare')!.value | toBoolean"
+         [maxGlare]="configuratorForm.get('maxGlare')!.value | toNumber"
     >
       <div class="credit-card__number"
            ngTiltParallax
@@ -196,7 +252,7 @@
     </div>
   </div>
 
-<!--  <div class="playground__dom">-->
-<!--    a-->
-<!--  </div>-->
+  <!--  <div class="playground__dom">-->
+  <!--    a-->
+  <!--  </div>-->
 </div>

@@ -19,8 +19,10 @@ export class PlaygroundComponent implements OnInit {
     easing: new FormControl<string>('cubic-bezier(.03,.98,.52,.99)'),
     scale: new FormControl<number>(1.1),
     speed: new FormControl<number>(400),
-    disableAxis: new FormControl<string | undefined>(undefined),
+    disableAxis: new FormControl<string | undefined>(''),
     reset: new FormControl<boolean>(true),
+    glare: new FormControl<boolean>(true),
+    maxGlare: new FormControl<number>(0.5),
   })
 
   constructor(
