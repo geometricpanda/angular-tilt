@@ -1,3 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/69d9522b-e3e8-43ea-b899-0be2084a752e/deploy-status)](https://app.netlify.com/sites/angular-tilt/deploys)
+[![npm version](https://badge.fury.io/js/%40geometricpanda%angular-tilt.svg)](https://www.npmjs.com/package/@geometricpanda/angular-tilt)
+
 # Angular Tilt
 
 An Angular port of [Tilt.js](https://gijsroge.github.io/tilt.js/).
