@@ -22,7 +22,7 @@ export class PlaygroundComponent implements OnInit {
     disableAxis: new FormControl<string | undefined>(''),
     reset: new FormControl<boolean>(true),
     glare: new FormControl<boolean>(true),
-    maxGlare: new FormControl<number>(0.5),
+    maxGlare: new FormControl<number>(0.4),
   })
 
   constructor(

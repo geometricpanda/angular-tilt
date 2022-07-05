@@ -4,7 +4,7 @@ import {
   HostBinding,
   HostListener, Inject,
   Input, OnChanges,
-  OnDestroy, OnInit, Renderer2,
+  OnDestroy, OnInit, Renderer2, SimpleChanges,
 } from '@angular/core';
 
 import {
@@ -115,7 +115,7 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
   /** Adds a glare to the tilted element */
   @Input() glare = false;
   /** Maximum brightness of the glare */
-  @Input() maxGlare = 0.3;
+  @Input() maxGlare = 0.4;
 
   @HostListener('mouseenter')
   private onMouseEnter() {
@@ -140,8 +140,8 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
     @Inject(DOCUMENT) private document: Document) {
   }
 
-  ngOnChanges() {
-    if (this.glare) {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['glare']?.currentValue) {
       this.createGlare();
     } else {
       this.removeGlare();
@@ -150,10 +150,17 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
 
   removeGlare() {
     this.outerGlare?.remove();
+    this.outerGlare = undefined;
     this.innerGlare?.remove();
+    this.innerGlare = undefined;
   }
 
   createGlare() {
+
+    if (this.outerGlare || this.innerGlare) {
+      this.removeGlare();
+    }
+
     const outer: HTMLDivElement = this.renderer.createElement('div');
     const inner: HTMLDivElement = this.renderer.createElement('div');
 
