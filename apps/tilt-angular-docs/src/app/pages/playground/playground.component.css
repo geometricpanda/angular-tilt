@@ -1,4 +1,4 @@
-::ng-deep .svg-inline--fa {
+:host ::ng-deep .svg-inline--fa {
   vertical-align: unset;
 }
 
