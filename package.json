@@ -7,7 +7,8 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
     "start": "nx run tilt-angular-docs:serve",
     "build": "nx run tilt-angular-docs:build",
-    "test": "nx test"
+    "test": "nx test",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +26,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@jscutlery/semver": "^2.25.2",
     "@nrwl/angular": "14.3.6",
     "modern-css-reset": "^1.4.0",
     "rxjs": "~7.4.0",
@@ -39,6 +41,8 @@
     "@angular/cli": "~14.0.0",
     "@angular/compiler-cli": "~14.0.0",
     "@angular/language-service": "~14.0.0",
+    "@commitlint/cli": "^17.0.0",
+    "@commitlint/config-angular": "^17.0.0",
     "@nrwl/cli": "14.3.6",
     "@nrwl/cypress": "14.3.6",
     "@nrwl/eslint-plugin-nx": "14.3.6",
@@ -53,6 +57,7 @@
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
+    "husky": "^8.0.0",
     "jest": "27.5.1",
     "jest-preset-angular": "~11.1.2",
     "ng-packagr": "~14.0.0",

@@ -35,6 +35,12 @@
           "libs/angular-tilt/**/*.html"
         ]
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "angular"
+      }
     }
   },
   "tags": []
