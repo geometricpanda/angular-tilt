@@ -1,3 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/69d9522b-e3e8-43ea-b899-0be2084a752e/deploy-status)](https://app.netlify.com/sites/angular-tilt/deploys)
+[![npm version](https://badge.fury.io/js/@geometricpanda%2Fangular-tilt.svg)](https://www.npmjs.com/package/@geometricpanda/angular-tilt)
+
 # Angular Tilt
 
 An Angular port of [Tilt.js](https://gijsroge.github.io/tilt.js/).
@@ -59,6 +62,8 @@ This is the main `ngTilt` directive which you apply to your order HTML element.
 |---------------|-----------|---------------------------------|---------------------------------------------------------------------------------|
 | `maxTilt`     | `number`  | `20`                            | The maximum number of degrees to tilt                                           |
 | `perspective` | `number`  | `300`                           | Sets the perspective of the plane, lower numbers will appear to transition more |
+| `glare`       | `boolean` | `false`                         | Applies a glare to the tilted element                                           |
+| `maxGlare`    | `number`  | `0.4`                           | Maximum amount of glare                                                         |
 | `easing`      | `string`  | `cubic-bezier(.03,.98,.52,.99)` | CSS Easing effect on mouse enter / exit                                         |
 | `scale`       | `number`  | `1`                             | CSS Scale transformation applied on mouseover, 1 = 100%, 2 = 200% ...           |
 | `speed`       | `number`  | `400`                           | Time taken in `ms` for reset transition                                         |
