@@ -2,9 +2,9 @@ import {
   Directive,
   ElementRef,
   HostBinding,
-  HostListener,
-  Input,
-  OnDestroy,
+  HostListener, Inject,
+  Input, OnChanges,
+  OnDestroy, OnInit, Renderer2,
 } from '@angular/core';
 
 import {
@@ -22,6 +22,7 @@ import {
 
 import {NgTiltMousePositions, NgTiltValues} from './ng-tilt.interface';
 import {RequestAnimationFrame} from './request-animation-frame.subject';
+import {DOCUMENT} from '@angular/common';
 
 
 const mousePositionToCoordinates = (element: HTMLElement) =>
@@ -67,7 +68,12 @@ const coordinatesToTransforms = (element: HTMLElement, maxTilt: number) =>
   selector: '[ngTilt]',
   exportAs: 'ngTilt',
 })
-export class NgTiltDirective implements OnDestroy {
+export class NgTiltDirective implements OnChanges, OnDestroy {
+
+  outerGlare?: HTMLDivElement;
+  innerGlare?: HTMLDivElement;
+
+  private $window = this.document.defaultView;
 
   private animationFrameSubject = RequestAnimationFrame();
   private mouseMoveSubject = new Subject<MouseEvent | void>();
@@ -106,6 +112,10 @@ export class NgTiltDirective implements OnDestroy {
   @Input() disableAxis?: 'x' | 'y' = undefined;
   /** If the tilt effect has to be reset on mouse exit */
   @Input() reset = true;
+  /** Adds a glare to the tilted element */
+  @Input() glare = false;
+  /** Maximum brightness of the glare */
+  @Input() maxGlare = 0.3;
 
   @HostListener('mouseenter')
   private onMouseEnter() {
@@ -124,7 +134,71 @@ export class NgTiltDirective implements OnDestroy {
     this.startReset();
   }
 
-  constructor(private elRef: ElementRef<HTMLElement>) {
+  constructor(
+    private elRef: ElementRef<HTMLElement>,
+    private renderer: Renderer2,
+    @Inject(DOCUMENT) private document: Document) {
+  }
+
+  ngOnChanges() {
+    if (this.glare) {
+      this.createGlare();
+    } else {
+      this.removeGlare();
+    }
+  }
+
+  removeGlare() {
+    this.outerGlare?.remove();
+    this.innerGlare?.remove();
+  }
+
+  createGlare() {
+    const outer: HTMLDivElement = this.renderer.createElement('div');
+    const inner: HTMLDivElement = this.renderer.createElement('div');
+
+    outer.setAttribute('data-tilt', 'outer');
+    outer.setAttribute('data-tilt', 'inner');
+
+    const hostStyles = this.$window?.getComputedStyle(this.elRef.nativeElement);
+
+
+    const outerStyles = {
+      'border-radius': hostStyles?.getPropertyValue('border-radius') || 'unset',
+      'overflow': 'hidden',
+      'pointer-events': 'none',
+      'position': 'absolute',
+      'top': '0',
+      'left': '0',
+      'width': '100%',
+      'height': '100%',
+    };
+
+    const innerStyles = {
+      'position': 'absolute',
+      'top': '50%',
+      'left': '50%',
+      'background-image': `linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)`,
+      'width': '200%',
+      'height': '200%',
+      'transform': 'rotate(180deg) translate(-50%, -50%)',
+      'transform-origin': '0% 0%',
+      'transition': `transform ${this.speed}ms ${this.easing}, opacity ${this.speed}ms ${this.easing}`,
+      'will-change': 'transform, opacity',
+      'opacity': '0',
+    }
+
+    Object.entries(outerStyles)
+      .forEach(([property, value]) => outer.style.setProperty(property, value));
+
+    Object.entries(innerStyles)
+      .forEach(([property, value]) => inner.style.setProperty(property, value));
+
+    this.outerGlare = outer;
+    this.innerGlare = inner;
+    this.renderer.appendChild(outer, inner);
+    this.renderer.appendChild(this.elRef.nativeElement, outer);
+
   }
 
   ngOnDestroy() {
@@ -141,24 +215,44 @@ export class NgTiltDirective implements OnDestroy {
     this.doTransitionSubscription = combineLatest([this.animationFrameSubject, transformCoordinates])
       .pipe(pluck(1))
       .pipe(distinct())
-      .pipe(map(({tiltX, tiltY}) => ({
+      .pipe(map(({tiltX, tiltY, ...rest}) => ({
         tiltX: this.disableAxis === 'x' ? 0 : tiltX,
         tiltY: this.disableAxis === 'y' ? 0 : tiltY,
+        ...rest,
       })))
-      .pipe(map(({tiltX, tiltY}) => [
-        `perspective(${this.perspective}px)`,
-        `scale3d(${this.scale},${this.scale},${this.scale})`,
-        `rotateX(${tiltY}deg)`,
-        `rotateY(${tiltX}deg)`,
-      ]))
-      .subscribe((transform) => this._hbStyleTransform = transform.join(''));
+      .pipe(map(({tiltX, tiltY, angle, percentageY}) => {
+        const hostStyleTransform = [
+          `perspective(${this.perspective}px)`,
+          `scale3d(${this.scale},${this.scale},${this.scale})`,
+          `rotateX(${tiltY}deg)`,
+          `rotateY(${tiltX}deg)`,
+        ].join('');
+
+        const glareStyleTransform = `rotate(${angle}deg) translate(-50%, -50%)`;
+        const glareStyleOpacity = `${percentageY * this.maxGlare / 100}`;
+
+        return {
+          hostStyleTransform,
+          glareStyleTransform,
+          glareStyleOpacity,
+        }
+      }))
+      .subscribe(({hostStyleTransform, glareStyleTransform, glareStyleOpacity}) => {
+        this._hbStyleTransform = hostStyleTransform;
+        this.innerGlare?.style.setProperty('transform', glareStyleTransform);
+        this.innerGlare?.style.setProperty('opacity', glareStyleOpacity);
+      });
   }
 
   private startReset() {
     this.resetTransitionSubscription = this.animationFrameSubject
       .pipe(throttleTime(this.speed))
       .pipe(filter(() => this.reset))
-      .pipe(tap(() => this._hbStyleTransform = undefined))
+      .pipe(tap(() => {
+        this._hbStyleTransform = undefined;
+        this.innerGlare?.style.setProperty('transform', 'rotate(180deg) translate(-50%, -50%)');
+        this.innerGlare?.style.setProperty('opacity', '0');
+      }))
       .pipe(delay(this.speed))
       .subscribe(() => this.stopReset());
   }
