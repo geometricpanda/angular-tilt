@@ -39,7 +39,9 @@
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
-        "preset": "angular"
+        "preset": "angular",
+        "commitMessageFormat": "build(${projectName}): release version ${version}",
+        "skipCommitTypes": ["docs","ci"]
       }
     }
   },
