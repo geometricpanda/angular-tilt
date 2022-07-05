@@ -13,7 +13,7 @@ export class PlaygroundComponent implements OnInit {
   faCcMastercard = faCcMastercard
 
   configuratorForm = new FormGroup({
-    perspective: new FormControl<number>(300),
+    perspective: new FormControl<number>(400),
     maxTilt: new FormControl<number>(20),
     distance: new FormControl<number>(50),
     easing: new FormControl<string>('cubic-bezier(.03,.98,.52,.99)'),

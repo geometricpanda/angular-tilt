@@ -3,7 +3,6 @@
 }
 
 .credit-card {
-
   background: linear-gradient(0.375turn, var(--color-dark-magenta) 0%, var(--color-magenta) 100%);
   aspect-ratio: 4/2.5;
   border-radius: 8px;

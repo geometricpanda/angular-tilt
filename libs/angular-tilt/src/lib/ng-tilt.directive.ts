@@ -121,8 +121,8 @@ export class NgTiltDirective implements OnInit {
 
     return {
       angle,
-      percentageX: percentageX * 100,
-      percentageY: percentageY * 100,
+      percentageX: Math.round(percentageX * 100),
+      percentageY: Math.round(percentageY * 100),
       tiltX,
       tiltY,
     };
