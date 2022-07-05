@@ -40,6 +40,12 @@
         ]
       }
     },
+    "push-tags": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "git push --tags --force"
+      }
+    },
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
@@ -47,6 +53,7 @@
         "commitMessageFormat": "build(${projectName}): release version ${version}",
         "postTargets": [
           "angular-tilt:publish",
+          "angular-tilt:push-tags",
           "angular-tilt:github"
         ],
         "skipCommitTypes": [
@@ -66,8 +73,7 @@
     "publish": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "access": "public",
-        "tag": ""
+        "access": "public"
       }
     }
   },

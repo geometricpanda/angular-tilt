@@ -37,4 +37,3 @@ jobs:
         run: |
           git tag -f last-release
           git push origin last-release --force
-          git push --tags
