@@ -141,10 +141,12 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['glare']?.currentValue) {
-      this.createGlare();
-    } else {
-      this.removeGlare();
+    if (changes['glare']) {
+      if (changes['glare']?.currentValue) {
+        this.createGlare();
+      } else {
+        this.removeGlare();
+      }
     }
   }
 
