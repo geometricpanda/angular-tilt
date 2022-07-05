@@ -45,11 +45,28 @@
       "options": {
         "preset": "angular",
         "commitMessageFormat": "build(${projectName}): release version ${version}",
+        "postTargets": [
+          "angular-tilt:publish",
+          "angular-tilt:github"
+        ],
         "skipCommitTypes": [
           "docs",
           "ci",
           "build"
         ]
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "${tag}",
+        "notes": "${notes}"
+      }
+    },
+    "publish": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
       }
     }
   },
