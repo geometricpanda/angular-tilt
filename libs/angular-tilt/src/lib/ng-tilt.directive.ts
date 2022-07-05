@@ -46,7 +46,7 @@ export class NgTiltDirective implements OnInit {
   /** Disables tilting on a specific */
   @Input() disableAxis?: 'x' | 'y' = undefined;
   /** If the tilt effect has to be reset on mouse exit */
-  @Input() reset = true;
+  @Input() reset: boolean = true;
 
   @HostListener('mouseenter')
   private onMouseEnter() {

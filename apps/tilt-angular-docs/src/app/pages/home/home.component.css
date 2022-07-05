@@ -47,7 +47,7 @@
   margin: auto;
   text-align: center;
   padding: var(--spacing-md);
-  box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .angular-tilt span {

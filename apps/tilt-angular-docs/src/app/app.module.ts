@@ -1,11 +1,14 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {AppRouterModule} from './app-router.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {AppComponent} from './app.component';
 import {HeaderModule} from './common/header';
-import {MenuNavigationModule} from './common/menu-navigation';
 import {FooterModule} from './common/footer';
+import {MenuNavigationModule} from './common/menu-navigation';
+
+import {AppRouterModule} from './app-router.module';
+import {AppComponent} from './app.component';
+
 
 @NgModule({
   declarations: [
@@ -13,6 +16,7 @@ import {FooterModule} from './common/footer';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRouterModule,
     HeaderModule,
     MenuNavigationModule,

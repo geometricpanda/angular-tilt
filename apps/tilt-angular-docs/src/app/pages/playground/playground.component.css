@@ -1,0 +1,174 @@
+::ng-deep .svg-inline--fa {
+  vertical-align: unset;
+}
+
+.credit-card {
+
+  background: linear-gradient(0.375turn, var(--color-dark-magenta) 0%, var(--color-magenta) 100%);
+  aspect-ratio: 4/2.5;
+  border-radius: 8px;
+  width: 100%;
+  color: var(--color-white);
+
+  display: grid;
+  gap: var(--spacing-2xs);
+  padding: 1.5vw 3vw 3vw;
+  grid-template-areas:
+    ".          .            .            ccLogo"
+    "ccNumber   ccNumber     ccNumber     ccNumber"
+    "ccName     ccName       ccName       ."
+    "ccSortCode ccSortCode  ccAccountNo   ccAccountNo";
+
+  grid-template-rows: 40% 2fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.credit-card__number {
+  grid-area: ccNumber;
+}
+
+.credit-card__logo {
+  grid-area: ccLogo;
+  font-size: 10vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.credit-card__sort-code {
+  grid-area: ccSortCode;
+}
+
+.credit-card__account-no {
+  grid-area: ccAccountNo;
+}
+
+.credit-card__name {
+  grid-area: ccName
+}
+
+.credit-card__name,
+.credit-card__number,
+.credit-card__sort-code,
+.credit-card__account-no {
+  font-family: monospace;
+  font-size: 5vw;
+  text-shadow: 0 0 4px rgba(0,0,0,0.8);
+}
+
+@media (min-width: 48em) {
+
+  .credit-card {
+    padding: 15px 20px 20px;
+  }
+
+  .credit-card__logo {
+    font-size: 3.6rem;
+  }
+
+  .credit-card__name,
+  .credit-card__number,
+  .credit-card__sort-code,
+  .credit-card__account-no {
+    font-size: 1.5rem;
+  }
+}
+
+.playground {
+  display: grid;
+  gap: var(--spacing-gap);
+  grid-template-areas:
+    'form'
+    'preview'
+    'dom';
+  max-width: var(--container-max-width);
+  margin: var(--spacing-2xl) auto;
+  padding: 0 var(--spacing-gutter);
+}
+
+@media (min-width: 48em) {
+  .playground {
+    grid-template-columns: 1fr 1fr;
+
+    grid-template-areas:
+      'form preview'
+      'dom dom';
+  }
+}
+
+.playground__form {
+  grid-area: form;
+}
+
+.playground__preview {
+  grid-area: preview;
+}
+
+.playground__dom {
+  grid-area: dom;
+}
+
+:host .form ::ng-deep .type {
+  color: var(--color-black);
+}
+
+.mat-slider-horizontal {
+  min-width: 100%;
+}
+
+.mat-slide-toggle {
+  margin: var(--spacing-sm) 0 var(--spacing-md);
+}
+
+.mat-form-field {
+  display: block;
+  font-family: var(--font-family);
+  font-size: var(--font-size-T200);
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.form__control {
+  display: grid;
+  column-gap: var(--spacing-gap);
+  grid-template-columns: calc(100vw - 150px) auto;
+  grid-template-areas:
+    'label label'
+    'description description'
+    'input value';
+}
+
+@media (min-width: 48em) {
+  .form__control {
+    grid-template-columns: calc(50vw - 150px) auto;
+  }
+}
+
+@media (min-width: 64em) {
+  .form__control {
+    grid-template-columns: 330px auto;
+  }
+}
+
+.form__control-label {
+  grid-area: label;
+}
+
+.form__control-description {
+  display: none;
+  grid-area: description;
+}
+
+.form__control-value {
+  grid-area: value;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+  display: flex;
+}
+
+.form__control-input {
+  grid-area: input;
+}

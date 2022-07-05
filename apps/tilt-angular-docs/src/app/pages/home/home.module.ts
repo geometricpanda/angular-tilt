@@ -5,6 +5,7 @@ import {HomeRouterModule} from './home-router.module';
 import {HeroModule} from '../../common/hero';
 import {TypographyModule} from '../../common/typography';
 import {HrModule} from '../../common/hr';
+import {AnchorModule} from '../../common/anchor';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -14,6 +15,7 @@ import {HrModule} from '../../common/hr';
     NgTiltModule,
     TypographyModule,
     HrModule,
+    AnchorModule,
   ],
   exports: [],
 })
