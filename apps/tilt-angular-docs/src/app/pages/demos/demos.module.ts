@@ -6,6 +6,8 @@ import {TypographyModule} from '../../common/typography';
 import {DemoMusicComponent} from './demo-music/demo-music.component';
 import {AnchorModule} from '../../common/anchor';
 import {TileModule} from '../../common/tile';
+import {CommonModule} from '@angular/common';
+import {NgTiltModule} from '@geometricpanda/angular-tilt';
 
 @NgModule({
   declarations: [
@@ -13,11 +15,13 @@ import {TileModule} from '../../common/tile';
     DemoMusicComponent,
   ],
   imports: [
+    CommonModule,
     DemosRouterModule,
     HeroModule,
     TypographyModule,
     AnchorModule,
     TileModule,
+    NgTiltModule,
   ],
   exports: [],
 })

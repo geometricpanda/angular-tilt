@@ -2,13 +2,15 @@
   display: block;
   color: var(--color-black);
   text-decoration: none;
+  transition: transform 150ms ease-in-out;
 }
 
 :host:hover {
-  color: var(--color-pink)
+  transform: scale(1.05);
 }
 
 :host:focus {
+  transform: scale(1.05);
   box-shadow: var(--focus-box-shadow);
   outline: var(--focus-outline);
   outline-offset: var(--focus-outline-offset);

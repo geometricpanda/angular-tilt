@@ -11,7 +11,6 @@ const home: Route = {
 
 const music: Route = {
   path: 'music',
-  pathMatch: 'full',
   component: DemoMusicComponent,
 };
 

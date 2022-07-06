@@ -10,10 +10,6 @@
   grid-template-columns: repeat(1, 1fr);
 }
 
-.grid__cell {
-  background-color: var(--color-dark-blue);
-}
-
 @media (min-width: 30em) {
   .grid {
     grid-template-columns: repeat(2, 1fr);

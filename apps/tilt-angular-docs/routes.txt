@@ -1,2 +1,4 @@
 /
 /playground
+/demos
+/demos/music

@@ -32,7 +32,7 @@ export class PlaygroundComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.title.setTitle('Playground | Geometric Panda');
+    this.title.setTitle('Playground | Angular Tilt | Geometric Panda');
     this.meta.addTag({
       name: 'description',
       content: 'Configure Angular Tilt and generate code snippets using our simple playground application.',
