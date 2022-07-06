@@ -23,6 +23,8 @@ jobs:
           git config user.name "GitHub Bot"
           git config user.email "gituser@example.com"
 
+      - uses: c-hive/gha-yarn-cache@v2
+
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
