@@ -2,3 +2,4 @@
 /playground
 /demos
 /demos/music
+/demos/carousel

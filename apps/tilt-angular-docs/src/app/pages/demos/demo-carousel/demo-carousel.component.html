@@ -1,0 +1,60 @@
+<app-hero>
+  <div class="hero">
+    <div class="hero__text">
+      <h1 app-type size="T700" weight="bold" marginBottom>Carousel Demo</h1>
+      <p app-type marginBottom>Swiper.js Angular carousel demo.</p>
+      <p app-type size="T200">Note: additional padding on Swiper.js is required to prevent clipping.</p>
+    </div>
+  </div>
+</app-hero>
+<div class="container">
+  <swiper
+    [autoplay]="{delay: 0, pauseOnMouseEnter: true, disableOnInteraction: true}"
+    [loop]="true"
+    [slidesPerView]="3"
+    [speed]="6000"
+    [spaceBetween]="50"
+  >
+    <ng-template
+      swiperSlide
+      *ngFor="let slide of slides">
+
+      <a routerLink="."
+         class="slide"
+         ngTilt
+         [maxTilt]="20"
+         [glare]="true"
+      >
+
+        <div class="slide__border slide__border--before"
+             ngTiltParallax
+             [distance]="13"
+        ></div>
+
+        <div class="slide__border slide__border--after"
+             ngTiltParallax
+             [distance]="15"></div>
+
+        <div class="slide__image">
+          <img
+            [src]="slide.img"
+            [alt]="slide.name"
+            class="slide__img"
+            width="480"
+            height="360"
+          />
+        </div>
+
+        <div class="slide__title"
+             ngTiltParallax
+             [distance]="17">
+          {{slide.name}}
+        </div>
+      </a>
+
+
+    </ng-template>
+  </swiper>
+
+
+</div>
