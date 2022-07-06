@@ -1,6 +1,7 @@
 :host {
   color: var(--color-light-yellow);
   font-weight: var(--font-weight-bold);
+  font-family: var(--font-family);
 }
 
 :host:hover {
