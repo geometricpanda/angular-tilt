@@ -1,0 +1,52 @@
+
+.opacity--10 {
+  opacity: 0.1;
+}
+
+.opacity--15 {
+  opacity: 0.15;
+}
+
+.opacity--30 {
+  opacity: 0.3;
+}
+
+.opacity--35 {
+  opacity: 0.35;
+}
+
+.fill--dark-blue {
+  fill: var(--color-dark-blue);
+}
+
+.fill--dark-teal {
+  fill: var(--color-dark-teal);
+}
+
+.fill--white {
+  fill: var(--color-white);
+}
+
+.fill--blue {
+  fill: var(--color-light-blue);
+}
+
+.fill--yellow {
+  fill: var(--color-light-yellow);
+}
+
+.fill--magenta {
+  fill: var(--color-magenta);
+}
+
+.fill--orange {
+  fill: var(--color-orange);
+}
+
+.fill--teal {
+  fill: var(--color-teal);
+}
+
+.fill--purple {
+  fill: var(--color-purple);
+}
