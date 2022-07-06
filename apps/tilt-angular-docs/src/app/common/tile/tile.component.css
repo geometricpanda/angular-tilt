@@ -1,0 +1,72 @@
+:host {
+  display: block;
+  color: var(--color-black);
+  text-decoration: none;
+}
+
+:host:hover {
+  color: var(--color-pink)
+}
+
+:host:focus {
+  box-shadow: var(--focus-box-shadow);
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+  padding: 4px;
+  margin: -4px;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family);
+  font-size: var(--font-size-T300);
+}
+
+.tile__inner {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.tile__image {
+  padding: var(--spacing-xs) var(--spacing-xs) 0;
+  background-color: var(--color-light-yellow);
+  aspect-ratio: 16/9;
+}
+
+.tile__image ::ng-deep img {
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tile__text {
+  display: flex;
+  background-color: var(--color-light-yellow);
+  padding: var(--spacing-sm ) var(--spacing-sm) ;
+}
+
+.tile__decoration {
+  display: block;
+  height: 20px;
+  margin-top: -4px;
+  z-index: 0;
+
+  --fill-top: var(--color-light-yellow);
+  --fill-bottom: var(--color-dark-teal);
+  --hex-bottom: var(--color-light-yellow);
+  --hex-top: var(--color-dark-teal);
+
+  background: radial-gradient(circle farthest-side at 0% 50%, var(--fill-top) 23.5%, transparent 0) 21px 30px,
+  radial-gradient(circle farthest-side at 0% 50%, var(--hex-top) 24%, transparent 0) 19px 30px,
+  linear-gradient(var(--fill-top) 14%, transparent 0, transparent 85%, var(--fill-top) 0) 0 0,
+  linear-gradient(150deg, var(--fill-top) 24%, var(--hex-top) 0, var(--hex-top) 26%, transparent 0, transparent 74%, var(--hex-top) 0, var(--hex-top) 76%, var(--fill-top) 0) 0 0,
+  linear-gradient(30deg, var(--fill-top) 24%, var(--hex-top) 0, var(--hex-top) 26%, transparent 0, transparent 74%, var(--hex-top) 0, var(--hex-top) 76%, var(--fill-top) 0) 0 0,
+  linear-gradient(90deg, var(--hex-bottom) 2%, var(--fill-bottom) 0, var(--fill-bottom) 98%, var(--hex-bottom) 0%) 0 0;
+
+  background-size: 40px 60px;
+}

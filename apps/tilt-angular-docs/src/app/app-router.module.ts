@@ -12,9 +12,15 @@ const playground: Route = {
   loadChildren: () => import('./pages/playground/playground.module').then(mod => mod.PlaygroundModule),
 }
 
+const demos: Route = {
+  path: 'demos',
+  loadChildren: () => import('./pages/demos/demos.module').then(mod => mod.DemosModule),
+}
+
 const routes: Routes = [
   home,
   playground,
+  demos,
 ];
 
 const options: ExtraOptions = {

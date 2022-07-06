@@ -1,0 +1,27 @@
+.container {
+  max-width: var(--container-max-width);
+  padding: var(--spacing-gap) var(--spacing-gutter);
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  gap: var(--spacing-gap);
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid__cell {
+  background-color: var(--color-dark-blue);
+}
+
+@media (min-width: 30em) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 48em) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
