@@ -1,0 +1,11 @@
+ng-fa-icon {
+  display: flex;
+}
+
+.svg-inline--fa {
+  display: inline-block;
+  box-sizing: content-box;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
