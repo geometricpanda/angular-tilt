@@ -32,14 +32,16 @@
 }
 
 .tile__image {
-  padding: var(--spacing-xs) var(--spacing-xs) 0;
+  display: block;
+  box-sizing: border-box;
+
   background-color: var(--color-light-yellow);
-  aspect-ratio: 16/9;
+  aspect-ratio: 4/3;
 }
 
 .tile__image ::ng-deep img {
-  padding: 0;
-  margin: 0;
+  display: flex;
+  padding: var(--spacing-xs) var(--spacing-xs) 0;
   vertical-align: middle;
   border: 0;
   width: 100%;
@@ -69,6 +71,5 @@
   linear-gradient(150deg, var(--fill-top) 24%, var(--hex-top) 0, var(--hex-top) 26%, transparent 0, transparent 74%, var(--hex-top) 0, var(--hex-top) 76%, var(--fill-top) 0) 0 0,
   linear-gradient(30deg, var(--fill-top) 24%, var(--hex-top) 0, var(--hex-top) 26%, transparent 0, transparent 74%, var(--hex-top) 0, var(--hex-top) 76%, var(--fill-top) 0) 0 0,
   linear-gradient(90deg, var(--hex-bottom) 2%, var(--fill-bottom) 0, var(--fill-bottom) 98%, var(--hex-bottom) 0%) 0 0;
-
   background-size: 40px 60px;
 }

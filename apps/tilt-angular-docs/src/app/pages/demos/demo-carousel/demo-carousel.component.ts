@@ -27,6 +27,21 @@ export class DemoCarouselComponent implements OnInit {
     },
   ];
 
+  breakpoints = {
+    '@0.75': {
+      slidesPerView: 2,
+      spaceBetween: 40,
+    },
+    '@1.00': {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    '@1.50': {
+      slidesPerView: 4,
+      spaceBetween: 24,
+    },
+  }
+
   constructor(
     private title: Title,
     private meta: Meta,

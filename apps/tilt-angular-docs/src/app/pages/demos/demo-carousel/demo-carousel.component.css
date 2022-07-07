@@ -1,5 +1,6 @@
+
 :host .swiper {
-  padding: 24px;
+overflow: visible;
 }
 
 .container {
@@ -7,11 +8,13 @@
   margin: auto;
   padding: var(--spacing-gutter);
   max-width: var(--container-max-width);
+  overflow-x: hidden;
 }
 
 .slide {
   display: block;
   position: relative;
+  max-width: 480px;
 }
 
 .slide__border {
