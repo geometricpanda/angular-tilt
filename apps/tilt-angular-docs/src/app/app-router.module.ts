@@ -1,10 +1,15 @@
-import {ExtraOptions, Route, RouterModule, Routes} from '@angular/router';
+import {ExtraOptions, PreloadAllModules, Route, RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 
 const home: Route = {
   path: '',
   pathMatch: 'full',
   loadChildren: () => import('./pages/home/home.module').then(mod => mod.HomeModule),
+}
+
+const api: Route = {
+  path: 'api',
+  loadChildren: () => import('./pages/api/api.module').then(mod => mod.ApiModule),
 }
 
 const playground: Route = {
@@ -19,12 +24,14 @@ const demos: Route = {
 
 const routes: Routes = [
   home,
+  api,
   playground,
   demos,
 ];
 
 const options: ExtraOptions = {
   initialNavigation: 'enabledBlocking',
+  preloadingStrategy: PreloadAllModules,
 }
 
 @NgModule({

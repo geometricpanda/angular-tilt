@@ -95,26 +95,14 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
   @HostBinding('style.transform-style')
   private readonly _hbStyleTransformStyle = 'preserve-3d';
 
-  /**
-   * Options
-   */
-  /** The maximum tilt rotation (degrees) */
   @Input() maxTilt = 20;
-  /** Sets the perspective, lower numbers will transition more */
   @Input() perspective = 300;
-  /** Easing effect on mouse enter / exit */
   @Input() easing = 'cubic-bezier(.03,.98,.52,.99)';
-  /** Sets the scale to increase on hover */
   @Input() scale = 1;
-  /** Sets the speed of the transition (in ms) */
   @Input() speed = 400;
-  /** Disables tilting on a specific */
   @Input() disableAxis?: 'x' | 'y' = undefined;
-  /** If the tilt effect has to be reset on mouse exit */
   @Input() reset = true;
-  /** Adds a glare to the tilted element */
   @Input() glare = false;
-  /** Maximum brightness of the glare */
   @Input() maxGlare = 0.4;
 
   @HostListener('mouseenter')
@@ -170,7 +158,6 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
     outer.setAttribute('data-tilt', 'inner');
 
     const hostStyles = this.$window?.getComputedStyle(this.elRef.nativeElement);
-
 
     const outerStyles = {
       'border-radius': hostStyles?.getPropertyValue('border-radius') || 'unset',

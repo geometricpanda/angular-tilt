@@ -1,0 +1,120 @@
+<app-hero>
+  <h1 app-type size="T700" weight="bold" marginBottom>Angular Tilt Api</h1>
+</app-hero>
+
+<div class="container">
+  <h2 app-type size="T500" weight="bold" marginBottom>Import Path</h2>
+
+  <p app-type marginBottom>
+    To use <code>angular-tilt</code>, you'll need to import the <code>NgTiltModule</code> into your project
+  </p>
+
+  <pre>import &lbrace;<span>NgTiltModule</span>&rbrace; from '<span>@geometricpanda/angular-tilt</span>';</pre>
+
+  <hr app-hr/>
+
+  <h2 app-type size="T500" weight="bold" marginBottom>[ngTilt] directive</h2>
+
+  <p app-type marginBottom>
+    You can apply <code>angular-tilt</code> by applying the <code>ngTilt</code> directive, such as:
+  </p>
+
+  <pre>&lt;div <span>ngTilt</span>&gt;
+  ...
+&lt;/div&gt;</pre>
+
+  <h3 app-type size="T400" marginBottom>Inputs</h3>
+
+  <div class="table" role="table">
+    <div class="table__row table__row--head" role="row">
+      <span class="table__cell" role="columnheader">Name</span>
+      <span class="table__cell" role="columnheader">Type</span>
+      <span class="table__cell" role="columnheader">Default Value</span>
+    </div>
+    <div class="table__row" role="row">
+      <span class="table__cell" role="cell"><code>maxTilt</code></span>
+      <span class="table__cell" role="cell"><code>number</code></span>
+      <span class="table__cell" role="cell"><code>20</code></span>
+      <span class="table__cell" role="cell">The maximum number of degrees for the tilt to rotate.</span>
+    </div>
+    <div class="table__row" role="row">
+      <span class="table__cell" role="cell"><code>perspective</code></span>
+      <span class="table__cell" role="cell"><code>number</code></span>
+      <span class="table__cell" role="cell"><code>300</code></span>
+      <span class="table__cell" role="cell">Sets the CSS perspective, lower numbers will transition more.</span>
+    </div>
+    <div class="table__row" role="row">
+      <span class="table__cell" role="cell"><code>easing</code></span>
+      <span class="table__cell" role="cell"><code>string</code></span>
+      <span class="table__cell" role="cell"><code>cubic-bezier(.03,.98,.52,.99)</code></span>
+      <span class="table__cell" role="cell">CSS Easing transition on mouse enter / exit.</span>
+    </div>
+    <div class="table__row" role="row">
+      <span class="table__cell" role="cell"><code>scale</code></span>
+      <span class="table__cell" role="cell"><code>number</code></span>
+      <span class="table__cell" role="cell"><code>1</code></span>
+      <span class="table__cell" role="cell">Sets the scale to increase on hover, 1 = 100%, 2 = 200%.</span>
+    </div>
+    <div class="table__row" role="row">
+      <span class="table__cell" role="cell"><code>speed</code></span>
+      <span class="table__cell" role="cell"><code>number</code></span>
+      <span class="table__cell" role="cell"><code>400</code></span>
+      <span class="table__cell" role="cell">Sets the speed of the transition (is ms).</span>
+    </div>
+    <div class="table__row" role="row">
+      <span class="table__cell" role="cell"><code>disableAxis</code></span>
+      <span class="table__cell" role="cell"><code>x</code><code>y</code></span>
+      <span class="table__cell" role="cell"><code>undefined</code></span>
+      <span class="table__cell" role="cell">Disables tilting on a specific axis.</span>
+    </div>
+    <div class="table__row" role="row">
+      <span class="table__cell" role="cell"><code>reset</code></span>
+      <span class="table__cell" role="cell"><code>boolean</code></span>
+      <span class="table__cell" role="cell"><code>false</code></span>
+      <span class="table__cell" role="cell">Sets whether the glare effect should reset ton mouse exit.</span>
+    </div>
+    <div class="table__row" role="row">
+      <span class="table__cell" role="cell"><code>glare</code></span>
+      <span class="table__cell" role="cell"><code>boolean</code></span>
+      <span class="table__cell" role="cell"><code>false</code></span>
+      <span class="table__cell" role="cell">Adds a glare effect to the tilted element</span>
+    </div>
+    <div class="table__row" role="row">
+      <span class="table__cell" role="cell"><code>maxGlare</code></span>
+      <span class="table__cell" role="cell"><code>number</code></span>
+      <span class="table__cell" role="cell"><code>0.4</code></span>
+      <span class="table__cell" role="cell">Maximum brightness of the glare</span>
+    </div>
+  </div>
+
+
+  <hr app-hr/>
+
+  <h2 app-type size="T500" weight="bold" marginBottom>[ngTiltParallax] directive</h2>
+
+  <p app-type marginBottom>
+    You can apply a parallax effect by applying the <code>ngTiltParallax</code> directive, to children of the <code>ngTilt</code>.
+  </p>
+
+  <pre>&lt;div <span>ngTilt</span>&gt;
+    &lt;div <span>ngTiltParallax</span>&gt;
+      ...
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+  <h3 app-type size="T400" marginBottom>Inputs</h3>
+
+  <div class="table" role="table">
+    <div class="table__row table__row--head" role="row">
+      <span class="table__cell" role="columnheader">Name</span>
+      <span class="table__cell" role="columnheader">Type</span>
+      <span class="table__cell" role="columnheader">Default Value</span>
+    </div>
+    <div class="table__row" role="row">
+      <span class="table__cell" role="cell"><code>distance</code></span>
+      <span class="table__cell" role="cell"><code>number</code></span>
+      <span class="table__cell" role="cell"><code>50</code></span>
+      <span class="table__cell" role="cell">Parallax distance which should be applied, greater numbers make elements appear further in front of the tilt.</span>
+    </div>
+  </div>
+</div>
