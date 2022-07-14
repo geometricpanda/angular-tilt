@@ -23,6 +23,7 @@ export class PlaygroundComponent implements OnInit {
     reset: new FormControl<boolean>(true),
     glare: new FormControl<boolean>(true),
     maxGlare: new FormControl<number>(0.4),
+    global: new FormControl<boolean>(false),
   })
 
   constructor(

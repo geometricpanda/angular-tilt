@@ -19,9 +19,6 @@
             <label id="distance-label" class="form__control-label" app-type>
               Distance
             </label>
-            <div class="form__control-description" app-type size="T200" weight="light">
-              Sets the parallax distance of the children.
-            </div>
             <div class="form__control-value" app-type>
               {{configuratorForm.get('distance')!.value}}
             </div>
@@ -39,9 +36,6 @@
             <label id="disable-axis-label" class="form__control-label" app-type>
               Disable Axis
             </label>
-            <div class="form__control-description" app-type size="T200" weight="light" marginBottom>
-              Disabled tilt from running on a given axis
-            </div>
             <div class="form__control-input">
               <mat-form-field appearance="legacy" hideRequiredMarker>
                 <select matNativeControl required formControlName="disableAxis" aria-labelledby="disable-axis-label">
@@ -56,9 +50,6 @@
             <label id="easing-label" class="form__control-label" app-type>
               Easing
             </label>
-            <div class="form__control-description" app-type size="T200" weight="light" marginBottom>
-              CSS Easing function to use on reset
-            </div>
             <div class="form__control-input">
               <mat-form-field appearance="legacy" hideRequiredMarker>
                 <select matNativeControl required formControlName="easing" aria-labelledby="easing-label">
@@ -76,9 +67,6 @@
             <label id="glare-label" class="form__control-label" app-type>
               Glare
             </label>
-            <div class="form__control-description" app-type size="T200" weight="light" marginBottom>
-              Configures where there is a glare or not
-            </div>
             <div class="form__control-value" app-type>
               {{configuratorForm.get('glare')!.value}}
             </div>
@@ -93,9 +81,6 @@
             <label id="max-glare-label" class="form__control-label" app-type>
               Max Glare
             </label>
-            <div class="form__control-description" app-type size="T200" weight="light" marginBottom>
-              Configures where there is a glare or not
-            </div>
             <div class="form__control-value" app-type>
               {{configuratorForm.get('maxGlare')!.value}}
             </div>
@@ -113,9 +98,6 @@
             <label id="max-tilt-label" class="form__control-label" app-type>
               Max Tilt
             </label>
-            <div class="form__control-description" app-type size="T200" weight="light">
-              Maximum amount of tilt to apply.
-            </div>
             <div class="form__control-value" app-type>
               {{configuratorForm.get('maxTilt')!.value}}
             </div>
@@ -133,9 +115,6 @@
             <label id="perspective-label" class="form__control-label" app-type>
               Perspective
             </label>
-            <div class="form__control-description" app-type size="T200" weight="light">
-              Sets the perspective of the plane to the observer.
-            </div>
             <div class="form__control-value" app-type>
               {{configuratorForm.get('perspective')!.value}}
             </div>
@@ -154,9 +133,6 @@
             <label id="reset-label" class="form__control-label" app-type>
               Reset
             </label>
-            <div class="form__control-description" app-type size="T200" weight="light" marginBottom>
-              Resets the tilt to default on mouse out.
-            </div>
             <div class="form__control-value" app-type>
               {{configuratorForm.get('reset')!.value}}
             </div>
@@ -171,9 +147,6 @@
             <label id="scale-label" class="form__control-label" app-type>
               Scale
             </label>
-            <div class="form__control-description" app-type size="T200" weight="light">
-              Sets the CSS scale when tilting.
-            </div>
             <div class="form__control-value" app-type>
               {{configuratorForm.get('scale')!.value}}
             </div>
@@ -191,9 +164,6 @@
             <label id="speed-label" class="form__control-label" app-type>
               Speed
             </label>
-            <div class="form__control-description" app-type size="T200" weight="light">
-              Sets the speed of the reset animation.
-            </div>
             <div class="form__control-value" app-type>
               {{configuratorForm.get('speed')!.value}}
             </div>
@@ -205,6 +175,20 @@
                 [min]="50"
                 [step]="1">
               </mat-slider>
+            </div>
+            <div class="form__control">
+              <label id="global-label" class="form__control-label" app-type>
+                Global
+              </label>
+              <div class="form__control-value" app-type>
+                {{configuratorForm.get('global')!.value}}
+              </div>
+              <div class="form__control-input">
+                <mat-slide-toggle
+                  formControlName="global"
+                  aria-labelledby="global-label"
+                ></mat-slide-toggle>
+              </div>
             </div>
           </div>
         </form>
@@ -223,6 +207,7 @@
          [disableAxis]="configuratorForm.get('disableAxis')?.value | toXyString"
          [glare]="configuratorForm.get('glare')!.value | toBoolean"
          [maxGlare]="configuratorForm.get('maxGlare')!.value | toNumber"
+         [global]="configuratorForm.get('global')!.value | toBoolean"
     >
       <div class="credit-card__number"
            ngTiltParallax

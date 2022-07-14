@@ -104,22 +104,36 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
   @Input() reset = true;
   @Input() glare = false;
   @Input() maxGlare = 0.4;
+  @Input() global = false;
 
   @HostListener('mouseenter')
   private onMouseEnter() {
-    this.stopReset();
-    this.startTransition();
+    if (!this.global) {
+      this.stopReset();
+      this.startTransition();
+    }
   }
 
   @HostListener('mousemove', ['$event'])
   private onMouseMove($event: MouseEvent) {
-    this.mouseMoveSubject.next($event);
+    if (!this.global) {
+      this.mouseMoveSubject.next($event);
+    }
+  }
+
+  @HostListener('window:mousemove', ['$event'])
+  private onWindowMouseMove($event: MouseEvent) {
+    if (this.global) {
+      this.mouseMoveSubject.next($event);
+    }
   }
 
   @HostListener('mouseleave')
   private onMouseLeave() {
-    this.stopTransition();
-    this.startReset();
+    if (!this.global) {
+      this.stopTransition();
+      this.startReset();
+    }
   }
 
   constructor(
@@ -134,6 +148,16 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
         this.createGlare();
       } else {
         this.removeGlare();
+      }
+    }
+
+    if (changes['global']) {
+      if (changes['global']?.currentValue) {
+        this.stopReset();
+        this.startTransition();
+      } else {
+        this.stopTransition();
+        this.startReset();
       }
     }
   }

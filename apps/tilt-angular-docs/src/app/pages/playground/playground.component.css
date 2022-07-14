@@ -135,7 +135,6 @@
   grid-template-columns: calc(100vw - 150px) auto;
   grid-template-areas:
     'label label'
-    'description description'
     'input value';
 }
 
@@ -155,10 +154,6 @@
   grid-area: label;
 }
 
-.form__control-description {
-  display: none;
-  grid-area: description;
-}
 
 .form__control-value {
   grid-area: value;
