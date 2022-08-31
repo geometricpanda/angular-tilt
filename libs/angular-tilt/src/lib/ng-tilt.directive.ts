@@ -2,9 +2,13 @@ import {
   Directive,
   ElementRef,
   HostBinding,
-  HostListener, Inject,
-  Input, OnChanges,
-  OnDestroy, OnInit, Renderer2, SimpleChanges,
+  HostListener,
+  Inject,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Renderer2,
+  SimpleChanges,
 } from '@angular/core';
 
 import {
@@ -41,17 +45,18 @@ const mousePositionToCoordinates = (element: HTMLElement) =>
 
 const coordinatesToTransforms = (element: HTMLElement, maxTilt: number) =>
   (mousePositions: NgTiltMousePositions): NgTiltValues => {
-    const {width, height, left, top} = element.getBoundingClientRect();
+    const {width, height, left} = element.getBoundingClientRect();
+    const { offsetTop } = element;
 
     const percentageX = (mousePositions.x - left) / width;
-    const percentageY = (mousePositions.y - top) / height;
+    const percentageY = (mousePositions.y - offsetTop) / height;
 
     const tiltX = (maxTilt / 2) - (percentageX * maxTilt);
     const tiltY = (percentageY * maxTilt) - (maxTilt / 2);
 
     const angle = Math.atan2(
       mousePositions.x - (left + width / 2),
-      mousePositions.y - (top + height / 2),
+      mousePositions.y - (offsetTop + height / 2),
     ) * (180 / Math.PI);
 
     return {
