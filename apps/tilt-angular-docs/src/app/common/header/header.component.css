@@ -1,6 +1,6 @@
 .header {
   background-color: var(--color-grey);
-  background-image: url("../../../assets/damask.svg");
+  background-image: url("/assets/damask.svg");
   background-repeat: repeat-x;
   background-position: 0 -250px;
 }

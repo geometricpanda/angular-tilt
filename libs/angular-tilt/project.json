@@ -1,13 +1,13 @@
 {
+  "name": "angular-tilt",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/angular-tilt/src",
   "prefix": "tilt",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
-      "outputs": [
-        "dist/libs/angular-tilt"
-      ],
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/libs/angular-tilt"],
       "options": {
         "project": "libs/angular-tilt/ng-package.json"
       },
@@ -22,23 +22,14 @@
       "defaultConfiguration": "production"
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/angular-tilt"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/angular-tilt"],
       "options": {
-        "jestConfig": "libs/angular-tilt/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/angular-tilt/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/angular-tilt/**/*.ts",
-          "libs/angular-tilt/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "push-tags": {
       "executor": "nx:run-commands",
@@ -56,11 +47,7 @@
           "angular-tilt:push-tags",
           "angular-tilt:github"
         ],
-        "skipCommitTypes": [
-          "docs",
-          "ci",
-          "build"
-        ]
+        "skipCommitTypes": ["docs", "ci", "build"]
       }
     },
     "github": {

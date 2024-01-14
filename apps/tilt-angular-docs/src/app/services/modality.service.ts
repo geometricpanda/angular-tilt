@@ -1,11 +1,10 @@
-import {Inject, Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {BlockScrollStrategy, ViewportRuler} from '@angular/cdk/overlay';
-import {DOCUMENT} from '@angular/common';
-import {Document} from 'postcss';
+import { inject, Inject, Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { BlockScrollStrategy, ViewportRuler } from '@angular/cdk/overlay';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ModalityService extends BlockScrollStrategy {
 
@@ -15,10 +14,9 @@ export class ModalityService extends BlockScrollStrategy {
     return this._state.asObservable();
   }
 
-  constructor(
-    viewportRuler: ViewportRuler,
-    @Inject(DOCUMENT) document: Document,
-  ) {
+  constructor() {
+    const viewportRuler = inject(ViewportRuler);
+    const document = inject(DOCUMENT);
     super(viewportRuler, document);
   }
 

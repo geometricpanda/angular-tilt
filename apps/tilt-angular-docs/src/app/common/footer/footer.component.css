@@ -68,7 +68,7 @@
 }
 
 .footer__trim {
-  background-image: url("../../../assets/damask.svg");
+  background-image: url("/assets/damask.svg");
   background-repeat: repeat-x;
   padding-top: 50px;
   margin-top: var(--spacing-lg);

@@ -9,51 +9,52 @@
 </app-hero>
 <div class="container">
   <swiper
+    ngSkipHydration
     [autoplay]="{pauseOnMouseEnter: true, disableOnInteraction: true}"
     [loop]="true"
     [spaceBetween]="20"
     [breakpoints]="breakpoints"
     slidesPerView="auto"
   >
-    <ng-template
-      swiperSlide
-      *ngFor="let slide of slides">
+    @for (slide of slides; track slide.id) {
+      <ng-template swiperSlide>
 
-      <a routerLink="."
-         class="slide"
-         ngTilt
-         [maxTilt]="20"
-         [glare]="true"
-      >
+        <a routerLink="."
+           class="slide"
+           ngTilt
+           [maxTilt]="10"
+           [glare]="true"
+        >
 
-        <div class="slide__border slide__border--before"
-             ngTiltParallax
-             [distance]="13"
-        ></div>
+          <div class="slide__border slide__border--before"
+               ngTiltParallax
+               [distance]="13"></div>
 
-        <div class="slide__border slide__border--after"
-             ngTiltParallax
-             [distance]="15"></div>
+          <div class="slide__border slide__border--after"
+               ngTiltParallax
+               [distance]="15"></div>
 
-        <div class="slide__image">
-          <img
-            [src]="slide.img"
-            [alt]="slide.name"
-            class="slide__img"
-            width="480"
-            height="360"
-          />
-        </div>
+          <div class="slide__image">
+            <img
+              [ngSrc]="slide.img"
+              [alt]="slide.name"
+              class="slide__img"
+              width="480"
+              height="360"
+            />
+          </div>
 
-        <div class="slide__title"
-             ngTiltParallax
-             [distance]="17">
-          {{slide.name}}
-        </div>
-      </a>
+          <div class="slide__title"
+               ngTiltParallax
+               [distance]="17">
+            {{ slide.name }}
+          </div>
+        </a>
+      </ng-template>
+
+    }
 
 
-    </ng-template>
   </swiper>
 
 

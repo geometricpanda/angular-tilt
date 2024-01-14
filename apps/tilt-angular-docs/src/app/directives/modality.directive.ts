@@ -1,28 +1,22 @@
-import {Directive, HostBinding, OnDestroy, OnInit} from '@angular/core';
-import {ModalityService} from '../services/modality.service';
-import {Subscription} from 'rxjs';
+import { Directive, HostBinding, inject } from '@angular/core';
+import { ModalityService } from '../services/modality.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Directive({
   selector: '[appModality]',
+  standalone: true
 })
-export class ModalityDirective implements OnInit, OnDestroy {
+export class ModalityDirective {
 
-  modalityListener$?: Subscription;
+  private modalityService = inject(ModalityService);
+
+  modalityListener$ = this.modalityService
+    .currentState
+    .pipe(takeUntilDestroyed())
+    .subscribe(state => this.hbAttrAriaHidden = state || undefined);
 
   @HostBinding('attr.aria-hidden')
-  private hbAttrAriaHidden?: boolean
+  private hbAttrAriaHidden?: boolean;
 
-  constructor(private modalityService: ModalityService) {
-  }
-
-  ngOnInit() {
-    this.modalityListener$ = this.modalityService
-      .currentState
-      .subscribe(state => this.hbAttrAriaHidden = state || undefined)
-  }
-
-  ngOnDestroy() {
-    this.modalityListener$?.unsubscribe();
-  }
 
 }

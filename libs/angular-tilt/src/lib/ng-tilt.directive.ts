@@ -1,14 +1,15 @@
 import {
+  booleanAttribute, DestroyRef,
   Directive,
   ElementRef,
   HostBinding,
   HostListener,
-  Inject,
+  inject,
   Input,
-  OnChanges,
-  OnDestroy,
+  numberAttribute,
+  OnChanges, PLATFORM_ID,
   Renderer2,
-  SimpleChanges,
+  SimpleChanges
 } from '@angular/core';
 
 import {
@@ -21,31 +22,32 @@ import {
   Subject,
   Subscription,
   tap,
-  throttleTime,
+  throttleTime
 } from 'rxjs';
 
-import {NgTiltMousePositions, NgTiltValues} from './ng-tilt.interface';
-import {RequestAnimationFrame} from './request-animation-frame.subject';
-import {DOCUMENT} from '@angular/common';
+import { NgTiltMousePositions, NgTiltValues } from './ng-tilt.interface';
+import { RequestAnimationFrame } from './request-animation-frame.subject';
+import { DOCUMENT, isPlatformServer } from '@angular/common';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 
 const mousePositionToCoordinates = (element: HTMLElement) =>
   ($event: MouseEvent | void): NgTiltMousePositions => {
     if (!$event) {
-      const {offsetTop, offsetLeft, clientWidth, clientHeight} = element;
-      const x = offsetLeft + clientWidth / 2
+      const { offsetTop, offsetLeft, clientWidth, clientHeight } = element;
+      const x = offsetLeft + clientWidth / 2;
       const y = offsetTop + clientHeight / 2;
-      return {x, y};
+      return { x, y };
     }
     return {
       x: $event.pageX,
-      y: $event.pageY,
+      y: $event.pageY
     };
-  }
+  };
 
 const coordinatesToTransforms = (element: HTMLElement, maxTilt: number) =>
   (mousePositions: NgTiltMousePositions): NgTiltValues => {
-    const {width, height, left} = element.getBoundingClientRect();
+    const { width, height, left } = element.getBoundingClientRect();
     const { offsetTop } = element;
 
     const percentageX = (mousePositions.x - left) / width;
@@ -56,7 +58,7 @@ const coordinatesToTransforms = (element: HTMLElement, maxTilt: number) =>
 
     const angle = Math.atan2(
       mousePositions.x - (left + width / 2),
-      mousePositions.y - (offsetTop + height / 2),
+      mousePositions.y - (offsetTop + height / 2)
     ) * (180 / Math.PI);
 
     return {
@@ -64,16 +66,23 @@ const coordinatesToTransforms = (element: HTMLElement, maxTilt: number) =>
       percentageX: Math.round(percentageX * 100),
       percentageY: Math.round(percentageY * 100),
       tiltX,
-      tiltY,
+      tiltY
     };
-  }
+  };
 
 
 @Directive({
   selector: '[ngTilt]',
   exportAs: 'ngTilt',
+  standalone: true
 })
-export class NgTiltDirective implements OnChanges, OnDestroy {
+export class NgTiltDirective implements OnChanges {
+
+  document = inject(DOCUMENT);
+  renderer = inject(Renderer2);
+  elRef: ElementRef<HTMLElement> = inject(ElementRef);
+  destroyRef = inject(DestroyRef);
+  platformId = inject(PLATFORM_ID)
 
   outerGlare?: HTMLDivElement;
   innerGlare?: HTMLDivElement;
@@ -100,16 +109,16 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
   @HostBinding('style.transform-style')
   private readonly _hbStyleTransformStyle = 'preserve-3d';
 
-  @Input() maxTilt = 20;
-  @Input() perspective = 300;
   @Input() easing = 'cubic-bezier(.03,.98,.52,.99)';
-  @Input() scale = 1;
-  @Input() speed = 400;
   @Input() disableAxis?: 'x' | 'y' = undefined;
-  @Input() reset = true;
-  @Input() glare = false;
-  @Input() maxGlare = 0.4;
-  @Input() global = false;
+  @Input({ transform: numberAttribute }) maxTilt = 20;
+  @Input({ transform: numberAttribute }) perspective = 300;
+  @Input({ transform: numberAttribute }) scale = 1;
+  @Input({ transform: numberAttribute }) speed = 400;
+  @Input({ transform: booleanAttribute }) reset = true;
+  @Input({ transform: booleanAttribute }) glare = false;
+  @Input({ transform: numberAttribute }) maxGlare = 0.4;
+  @Input({ transform: booleanAttribute }) global = false;
 
   @HostListener('mouseenter')
   private onMouseEnter() {
@@ -139,12 +148,6 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
       this.stopTransition();
       this.startReset();
     }
-  }
-
-  constructor(
-    private elRef: ElementRef<HTMLElement>,
-    private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document) {
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -196,7 +199,7 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
       'top': '0',
       'left': '0',
       'width': '100%',
-      'height': '100%',
+      'height': '100%'
     };
 
     const innerStyles = {
@@ -210,8 +213,8 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
       'transform-origin': '0% 0%',
       'transition': `transform ${this.speed}ms ${this.easing}, opacity ${this.speed}ms ${this.easing}`,
       'will-change': 'transform, opacity',
-      'opacity': '0',
-    }
+      'opacity': '0'
+    };
 
     Object.entries(outerStyles)
       .forEach(([property, value]) => outer.style.setProperty(property, value));
@@ -226,12 +229,11 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
 
   }
 
-  ngOnDestroy() {
-    this.stopReset();
-    this.stopTransition();
-  }
-
   private startTransition() {
+
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
 
     const transformCoordinates = this.mouseMoveSubject
       .pipe(map(mousePositionToCoordinates(this.elRef.nativeElement)))
@@ -240,17 +242,17 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
     this.doTransitionSubscription = combineLatest([this.animationFrameSubject, transformCoordinates])
       .pipe(pluck(1))
       .pipe(distinct())
-      .pipe(map(({tiltX, tiltY, ...rest}) => ({
+      .pipe(map(({ tiltX, tiltY, ...rest }) => ({
         tiltX: this.disableAxis === 'x' ? 0 : tiltX,
         tiltY: this.disableAxis === 'y' ? 0 : tiltY,
-        ...rest,
+        ...rest
       })))
-      .pipe(map(({tiltX, tiltY, angle, percentageY}) => {
+      .pipe(map(({ tiltX, tiltY, angle, percentageY }) => {
         const hostStyleTransform = [
           `perspective(${this.perspective}px)`,
           `scale3d(${this.scale},${this.scale},${this.scale})`,
           `rotateX(${tiltY}deg)`,
-          `rotateY(${tiltX}deg)`,
+          `rotateY(${tiltX}deg)`
         ].join('');
 
         const glareStyleTransform = `rotate(${angle}deg) translate(-50%, -50%)`;
@@ -259,10 +261,11 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
         return {
           hostStyleTransform,
           glareStyleTransform,
-          glareStyleOpacity,
-        }
+          glareStyleOpacity
+        };
       }))
-      .subscribe(({hostStyleTransform, glareStyleTransform, glareStyleOpacity}) => {
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(({ hostStyleTransform, glareStyleTransform, glareStyleOpacity }) => {
         this._hbStyleTransform = hostStyleTransform;
         this.innerGlare?.style.setProperty('transform', glareStyleTransform);
         this.innerGlare?.style.setProperty('opacity', glareStyleOpacity);
@@ -270,6 +273,11 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
   }
 
   private startReset() {
+
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     this.resetTransitionSubscription = this.animationFrameSubject
       .pipe(throttleTime(this.speed))
       .pipe(filter(() => this.reset))
@@ -279,6 +287,7 @@ export class NgTiltDirective implements OnChanges, OnDestroy {
         this.innerGlare?.style.setProperty('opacity', '0');
       }))
       .pipe(delay(this.speed))
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => this.stopReset());
   }
 

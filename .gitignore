@@ -37,8 +37,14 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
 .angular
+.nx/cache
 
 # Local Netlify folder
 .netlify
+
+# Yarn
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*

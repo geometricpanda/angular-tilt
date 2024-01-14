@@ -1,17 +1,22 @@
-import {Component, ElementRef, HostBinding, HostListener, OnDestroy, OnInit} from '@angular/core';
-import {faBars} from '@fortawesome/free-solid-svg-icons';
-import {MenuStateService} from '../../services/menu-state.service';
-import {skip, Subscription, tap} from 'rxjs';
+import { Component, ElementRef, HostBinding, HostListener, inject, OnDestroy, OnInit } from '@angular/core';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { skip, Subscription, tap } from 'rxjs';
+import { MenuStateService } from '../../services/menu-state.service';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'button[app-menu-toggle]',
   styleUrls: ['menu-toggle.component.css'],
+  standalone: true,
+  imports: [FontAwesomeModule],
   template: `
-    <fa-icon [icon]="faBars"></fa-icon>
-  `,
+    <fa-icon [icon]="faBars" />
+  `
 })
 export class MenuToggleComponent implements OnInit, OnDestroy {
+  private menuStateService = inject(MenuStateService);
+  private elRef: ElementRef<HTMLButtonElement> = inject(ElementRef);
 
   faBars = faBars;
 
@@ -37,17 +42,11 @@ export class MenuToggleComponent implements OnInit, OnDestroy {
     this.menuStateService.setState(true);
   }
 
-  constructor(
-    private menuStateService: MenuStateService,
-    private elRef: ElementRef<HTMLButtonElement>,
-  ) {
-  }
-
   ngOnInit(): void {
     this.menuState$ = this.menuStateService.currentState
       .pipe(skip(1))
       .pipe(tap((state) => !state && this.elRef.nativeElement.focus()))
-      .subscribe(state => this.hbAttrAriaExpanded = state)
+      .subscribe(state => this.hbAttrAriaExpanded = state);
   }
 
   ngOnDestroy(): void {
