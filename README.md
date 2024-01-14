@@ -21,13 +21,6 @@ Angular Tilt is available from [npmjs.com](https://npmjs.com/package/@geometricp
 
 `yarn add @geometricpanda/angular-tilt`
 
-### Compatibility
-
-| Version | Angular Version |
-|---------|-----------------|
-| `0.3.x` | `^14.0.0`       |
-| `0.4.x` | `^15.0.0`       |
-
 ## Getting Started
 
 You'll need to add the `NgTiltModule` to the relevant parts of your application:
