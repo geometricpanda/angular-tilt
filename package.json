@@ -48,7 +48,6 @@
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-angular": "^17.0.0",
     "@commitlint/config-nx-scopes": "^17.0.0",
-    "@nguniversal/builders": "16.2.0",
     "@nx/cypress": "17.2.8",
     "@nx/eslint-plugin": "17.2.8",
     "@nx/jest": "17.2.8",
