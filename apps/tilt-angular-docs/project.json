@@ -5,9 +5,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/tilt-angular-docs/browser",
         "index": "apps/tilt-angular-docs/src/index.html",
@@ -23,9 +21,7 @@
             "output": "/"
           }
         ],
-        "styles": [
-          "apps/tilt-angular-docs/src/styles.css"
-        ],
+        "styles": ["apps/tilt-angular-docs/src/styles.css"],
         "scripts": []
       },
       "configurations": {
@@ -90,9 +86,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/tilt-angular-docs"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/apps/tilt-angular-docs"],
       "options": {
         "jestConfig": "apps/tilt-angular-docs/jest.config.ts",
         "passWithNoTests": true
