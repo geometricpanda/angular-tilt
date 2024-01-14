@@ -30,13 +30,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/angular-tilt/**/*.ts",
-          "libs/angular-tilt/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "push-tags": {
       "executor": "nx:run-commands",
