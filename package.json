@@ -48,7 +48,6 @@
     "@commitlint/config-angular": "^17.0.0",
     "@commitlint/config-nx-scopes": "^17.0.0",
     "@nguniversal/builders": "15.2.1",
-    "@nrwl/jest": "16.0.0",
     "@types/jest": "29.4.4",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "5.62.0",
@@ -75,6 +74,7 @@
     "@nx/workspace": "16.0.0",
     "@nx/linter": "16.0.0",
     "@nx/cypress": "16.0.0",
-    "@nx/eslint-plugin": "16.0.0"
+    "@nx/eslint-plugin": "16.0.0",
+    "@nx/jest": "16.0.0"
   }
 }

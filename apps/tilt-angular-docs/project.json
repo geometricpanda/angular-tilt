@@ -87,7 +87,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/tilt-angular-docs"],
       "options": {
         "jestConfig": "apps/tilt-angular-docs/jest.config.ts",
