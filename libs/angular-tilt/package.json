@@ -2,7 +2,7 @@
   "name": "@geometricpanda/angular-tilt",
   "homepage": "https://angular-tilt.geometricpanda.dev",
   "repository": "https://github.com/geometricpanda/angular-tilt/tree/main/libs/angular-tilt",
-  "version": "0.0.1",
+  "version": "0.3.0",
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0"

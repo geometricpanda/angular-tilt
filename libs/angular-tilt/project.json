@@ -41,7 +41,7 @@
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "angular",
-        "commitMessageFormat": "build(${projectName}): release version ${version}",
+        "commitMessageFormat": "build({projectName}): release version ${version}",
         "postTargets": [
           "angular-tilt:publish",
           "angular-tilt:push-tags",
