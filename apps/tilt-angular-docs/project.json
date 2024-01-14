@@ -117,7 +117,21 @@
           "extractLicenses": false
         }
       },
-      "defaultConfiguration": "production"
+      "defaultConfiguration": "production",
+      "production": {
+        "outputHashing": "media",
+        "fileReplacements": [
+          {
+            "replace": "apps/tilt-angular-docs/src/environments/environment.ts",
+            "with": "apps/tilt-angular-docs/src/environments/environment.prod.ts"
+          }
+        ]
+      },
+      "development": {
+        "optimization": false,
+        "sourceMap": true,
+        "extractLicenses": false
+      }
     },
     "serve-ssr": {
       "executor": "@nguniversal/builders:ssr-dev-server",
