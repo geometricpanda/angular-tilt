@@ -90,8 +90,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/tilt-angular-docs"],
       "options": {
-        "jestConfig": "apps/tilt-angular-docs/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/tilt-angular-docs/jest.config.ts"
       }
     },
     "server": {
