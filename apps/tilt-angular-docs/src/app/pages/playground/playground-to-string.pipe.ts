@@ -1,8 +1,8 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {coerceNumberProperty} from '@angular/cdk/coercion';
 
 @Pipe({
   name: 'toXyString',
+  standalone: true
 })
 export class PlaygroundToXyStringPipe implements PipeTransform {
 

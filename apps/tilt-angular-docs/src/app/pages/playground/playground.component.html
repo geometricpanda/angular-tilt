@@ -4,7 +4,6 @@
       <h1 app-type size="T700" weight="bold" marginBottom>Playground</h1>
       <p app-type size="T400">Configure angular-tilt and see the results in real-time.</p>
     </div>
-
   </div>
 </app-hero>
 
@@ -20,15 +19,18 @@
               Distance
             </label>
             <div class="form__control-value" app-type>
-              {{configuratorForm.get('distance')!.value}}
+              {{ configuratorForm.get('distance')!.value }}
             </div>
             <div class="form__control-input">
               <mat-slider
-                formControlName="distance"
-                aria-labelledby="distance-label"
+
                 [max]="100"
                 [min]="0"
                 [step]="1">
+                <input
+                  matSliderThumb
+                  formControlName="distance"
+                  aria-labelledby="distance-label" />
               </mat-slider>
             </div>
           </div>
@@ -37,7 +39,7 @@
               Disable Axis
             </label>
             <div class="form__control-input">
-              <mat-form-field appearance="legacy" hideRequiredMarker>
+              <mat-form-field appearance="fill" hideRequiredMarker>
                 <select matNativeControl required formControlName="disableAxis" aria-labelledby="disable-axis-label">
                   <option value="">None</option>
                   <option value="x">X</option>
@@ -51,7 +53,7 @@
               Easing
             </label>
             <div class="form__control-input">
-              <mat-form-field appearance="legacy" hideRequiredMarker>
+              <mat-form-field appearance="fill" hideRequiredMarker>
                 <select matNativeControl required formControlName="easing" aria-labelledby="easing-label">
                   <option value="linear">linear</option>
                   <option value="ease">ease</option>
@@ -68,13 +70,13 @@
               Glare
             </label>
             <div class="form__control-value" app-type>
-              {{configuratorForm.get('glare')!.value}}
+              {{ configuratorForm.get('glare')!.value }}
             </div>
             <div class="form__control-input">
               <mat-slide-toggle
                 formControlName="glare"
                 aria-labelledby="glare-label"
-              ></mat-slide-toggle>
+              />
             </div>
           </div>
           <div class="form__control">
@@ -82,15 +84,16 @@
               Max Glare
             </label>
             <div class="form__control-value" app-type>
-              {{configuratorForm.get('maxGlare')!.value}}
+              {{ configuratorForm.get('maxGlare')!.value }}
             </div>
             <div class="form__control-input">
               <mat-slider
-                formControlName="maxGlare"
-                aria-labelledby="max-glare-label"
                 [max]="1"
                 [min]="0"
                 [step]="0.01">
+                <input matSliderThumb
+                       formControlName="maxGlare"
+                       aria-labelledby="max-glare-label" />
               </mat-slider>
             </div>
           </div>
@@ -99,15 +102,16 @@
               Max Tilt
             </label>
             <div class="form__control-value" app-type>
-              {{configuratorForm.get('maxTilt')!.value}}
+              {{ configuratorForm.get('maxTilt')!.value }}
             </div>
             <div class="form__control-input">
               <mat-slider
-                formControlName="maxTilt"
-                aria-labelledby="max-tilt-label"
                 [max]="45"
                 [min]="0"
                 [step]="1">
+                <input matSliderThumb
+                       formControlName="maxTilt"
+                       aria-labelledby="max-tilt-label" />
               </mat-slider>
             </div>
           </div>
@@ -116,16 +120,16 @@
               Perspective
             </label>
             <div class="form__control-value" app-type>
-              {{configuratorForm.get('perspective')!.value}}
+              {{ configuratorForm.get('perspective')!.value }}
             </div>
             <div class="form__control-input">
               <mat-slider
-                formControlName="perspective"
-                aria-labelledby="perspective-label"
-                [thumbLabel]="true"
                 [max]="500"
                 [min]="300"
                 [step]="1">
+                <input matSliderThumb
+                       formControlName="perspective"
+                       aria-labelledby="perspective-label" />
               </mat-slider>
             </div>
           </div>
@@ -134,13 +138,13 @@
               Reset
             </label>
             <div class="form__control-value" app-type>
-              {{configuratorForm.get('reset')!.value}}
+              {{ configuratorForm.get('reset')!.value }}
             </div>
             <div class="form__control-input">
               <mat-slide-toggle
                 formControlName="reset"
                 aria-labelledby="reset-label"
-              ></mat-slide-toggle>
+              />
             </div>
           </div>
           <div class="form__control">
@@ -148,15 +152,16 @@
               Scale
             </label>
             <div class="form__control-value" app-type>
-              {{configuratorForm.get('scale')!.value}}
+              {{ configuratorForm.get('scale')!.value }}
             </div>
             <div class="form__control-input">
               <mat-slider
-                formControlName="scale"
-                aria-labelledby="scale-label"
                 [max]="1.5"
                 [min]="0.8"
                 [step]="0.1">
+                <input matSliderThumb
+                       formControlName="scale"
+                       aria-labelledby="scale-label" />
               </mat-slider>
             </div>
           </div>
@@ -165,15 +170,16 @@
               Speed
             </label>
             <div class="form__control-value" app-type>
-              {{configuratorForm.get('speed')!.value}}
+              {{ configuratorForm.get('speed')!.value }}
             </div>
             <div class="form__control-input">
               <mat-slider
-                formControlName="speed"
-                aria-labelledby="speed-label"
                 [max]="1500"
                 [min]="50"
                 [step]="1">
+                <input matSliderThumb
+                       formControlName="speed"
+                       aria-labelledby="speed-label" />
               </mat-slider>
             </div>
             <div class="form__control">
@@ -181,13 +187,13 @@
                 Global
               </label>
               <div class="form__control-value" app-type>
-                {{configuratorForm.get('global')!.value}}
+                {{ configuratorForm.get('global')!.value }}
               </div>
               <div class="form__control-input">
                 <mat-slide-toggle
                   formControlName="global"
                   aria-labelledby="global-label"
-                ></mat-slide-toggle>
+                />
               </div>
             </div>
           </div>

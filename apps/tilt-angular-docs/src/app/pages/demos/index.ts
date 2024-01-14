@@ -20,15 +20,8 @@ const carousel: Route = {
   component: DemoCarouselComponent,
 };
 
-const routes: Routes = [
+export default [
   home,
   music,
   carousel,
 ]
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class DemosRouterModule {
-}

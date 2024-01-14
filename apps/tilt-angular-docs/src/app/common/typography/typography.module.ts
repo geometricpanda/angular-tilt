@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {TypographyComponent} from './typography.component';
 
 @NgModule({
-  declarations: [TypographyComponent],
+  imports: [TypographyComponent],
   exports: [TypographyComponent],
 })
 export class TypographyModule {

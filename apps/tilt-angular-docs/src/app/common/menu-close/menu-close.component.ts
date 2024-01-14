@@ -1,5 +1,6 @@
-import {Component, ElementRef, HostBinding} from '@angular/core';
-import {faTimes} from '@fortawesome/free-solid-svg-icons/faTimes';
+import { Component, ElementRef, HostBinding } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
 
 
 @Component({
@@ -7,8 +8,10 @@ import {faTimes} from '@fortawesome/free-solid-svg-icons/faTimes';
   selector: 'button[app-menu-close]',
   styleUrls: ['./menu-close.component.css'],
   template: `
-    <fa-icon [icon]="faTimes"></fa-icon>
+    <fa-icon [icon]="faTimes" />
   `,
+  imports: [FontAwesomeModule],
+  standalone: true
 })
 export class MenuCloseComponent {
 

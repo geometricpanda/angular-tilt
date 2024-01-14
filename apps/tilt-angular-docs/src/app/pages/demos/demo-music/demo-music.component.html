@@ -9,41 +9,41 @@
 
   <div class="grid">
 
+    @for (album of albums; track album.id) {
+      <a routerLink="."
+         class="album"
+         ngTilt
+         maxTilt="10"
+         global
+         glare
+      >
 
-    <a routerLink="."
-       *ngFor="let album of albums"
-       class="album"
-       ngTilt
-       [maxTilt]="10"
-       [glare]="true"
-    >
+        <div class="album__border album__border--before"
+             ngTiltParallax
+             distance="13"
+        ></div>
 
-      <div class="album__border album__border--before"
-           ngTiltParallax
-           [distance]="13"
-      ></div>
+        <div class="album__border album__border--after"
+             ngTiltParallax
+             distance="15"></div>
 
-      <div class="album__border album__border--after"
-           ngTiltParallax
-           [distance]="15"></div>
+        <div class="album__image">
+          <img
+            [ngSrc]="album.img"
+            [alt]="album.name"
+            class="album__img"
+            width="480"
+            height="360"
+          />
+        </div>
 
-      <div class="album__image">
-        <img
-          [src]="album.img"
-          [alt]="album.name"
-          class="album__img"
-          width="480"
-          height="360"
-        />
-      </div>
-
-      <div class="album__title"
-           ngTiltParallax
-           [distance]="17">
-        {{album.name}}
-      </div>
-    </a>
-
+        <div class="album__title"
+             ngTiltParallax
+             distance="17">
+          {{ album.name }}
+        </div>
+      </a>
+    }
   </div>
 
 </div>

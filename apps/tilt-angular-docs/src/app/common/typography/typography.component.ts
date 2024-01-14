@@ -1,11 +1,12 @@
-import {Component, HostBinding, Input} from '@angular/core';
-import {coerceBooleanProperty} from '@angular/cdk/coercion';
+import { booleanAttribute, Component, HostBinding, Input } from '@angular/core';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[app-type]',
   styleUrls: ['./typography.component.css'],
-  template: '<ng-content></ng-content>',
+  template: '<ng-content/>',
+  standalone: true
 })
 export class TypographyComponent {
 
@@ -64,10 +65,10 @@ export class TypographyComponent {
 
   @HostBinding('class.type--margin-bottom')
   private get hbClassTypeMarginBottom(): boolean {
-    return coerceBooleanProperty(this.marginBottom);
+    return this.marginBottom;
   }
 
-  @Input() weight: 'light' | 'regular' | 'bold' | 'heavy' = 'regular'
-  @Input() marginBottom: boolean | string = false;
+  @Input() weight: 'light' | 'regular' | 'bold' | 'heavy' = 'regular';
+  @Input({ transform: booleanAttribute }) marginBottom: boolean = false;
   @Input() size: 'T200' | 'T300' | 'T400' | 'T500' | 'T600' | 'T700' = 'T300';
 }

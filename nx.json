@@ -6,11 +6,12 @@
   "cli": {
     "packageManager": "yarn"
   },
+  "defaultProject": "tilt-angular-docs",
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"],
-      "cache": true
+      "cache": false
     },
     "lint": {
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"],

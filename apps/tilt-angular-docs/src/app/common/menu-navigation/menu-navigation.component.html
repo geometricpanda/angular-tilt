@@ -23,23 +23,24 @@
   </div>
 
   <ul class="navigation__links">
-    <li class="navigation__link"
-        *ngFor="let link of links"
-        [ngSwitch]="link.type">
+    @for (link of links; track link.url) {
+      <li class="navigation__link">
 
-      <ng-container
-        *ngSwitchCase="'link'"
-        [ngTemplateOutlet]="hyperlink"
-        [ngTemplateOutletContext]="link"
-      ></ng-container>
+        @switch (link.type) {
+          @case ('link') {
+            <ng-container
+              [ngTemplateOutlet]="hyperlink"
+              [ngTemplateOutletContext]="link" />
+          }
+          @default {
+            <ng-container
+              [ngTemplateOutlet]="routerlink"
+              [ngTemplateOutletContext]="link" />
+          }
+        }
 
-      <ng-container
-        *ngSwitchDefault
-        [ngTemplateOutlet]="routerlink"
-        [ngTemplateOutletContext]="link"
-      ></ng-container>
-
-    </li>
+      </li>
+    }
   </ul>
 </nav>
 
@@ -48,8 +49,8 @@
      [href]="url"
      target="_blank"
      [attr.tabindex]="(menuStateService.currentState | async) ? null : -1">
-    <fa-icon [icon]="icon" class="link__icon"></fa-icon>
-    {{title}}
+    <fa-icon [icon]="icon" class="link__icon" />
+    {{ title }}
   </a>
 </ng-template>
 
@@ -60,8 +61,8 @@
      ariaCurrentWhenActive="page"
      [routerLinkActiveOptions]="{exact:true}"
      [attr.tabindex]="(menuStateService.currentState | async) ? null : -1">
-    <fa-icon [icon]="icon" class="link__icon"></fa-icon>
-    {{title}}
+    <fa-icon [icon]="icon" class="link__icon" />
+    {{ title }}
   </a>
 </ng-template>
 

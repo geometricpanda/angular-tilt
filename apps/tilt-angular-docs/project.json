@@ -2,59 +2,70 @@
   "name": "tilt-angular-docs",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/tilt-angular-docs/src",
   "prefix": "app",
+  "sourceRoot": "apps/tilt-angular-docs/src",
+  "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
-        "outputPath": "dist/apps/tilt-angular-docs/browser",
+        "allowedCommonJsDependencies": [
+          "@fortawesome/free-brands-svg-icons/faNpm",
+          "@fortawesome/free-solid-svg-icons/faGamepad",
+          "@fortawesome/free-solid-svg-icons/faHouseChimney",
+          "@fortawesome/free-solid-svg-icons/faBook",
+          "@fortawesome/free-solid-svg-icons/faImage",
+          "@fortawesome/free-brands-svg-icons/faGithubAlt",
+          "@fortawesome/free-brands-svg-icons/faCcMastercard",
+          "@fortawesome/free-solid-svg-icons/faTimes"
+        ],
+        "outputPath": "dist/apps/tilt-angular-docs",
         "index": "apps/tilt-angular-docs/src/index.html",
-        "main": "apps/tilt-angular-docs/src/main.ts",
-        "polyfills": "apps/tilt-angular-docs/src/polyfills.ts",
+        "browser": "apps/tilt-angular-docs/src/main.ts",
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/tilt-angular-docs/tsconfig.app.json",
         "assets": [
           "apps/tilt-angular-docs/src/favicon.ico",
           "apps/tilt-angular-docs/src/assets",
-          {
-            "glob": "_redirects",
-            "input": "apps/tilt-angular-docs",
-            "output": "/"
-          }
+          "apps/tilt-angular-docs/src/_redirects"
         ],
-        "styles": ["apps/tilt-angular-docs/src/styles.css"],
-        "scripts": []
+        "styles": [
+          "apps/tilt-angular-docs/src/styles.css"
+        ],
+        "scripts": [],
+        "server": "apps/tilt-angular-docs/src/main.server.ts",
+        "prerender": {
+          "routesFile": "apps/tilt-angular-docs/routes.txt"
+        },
+        "ssr": {
+          "entry": "apps/tilt-angular-docs/server.ts"
+        }
       },
       "configurations": {
         "production": {
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
+              "maximumWarning": "510kb",
               "maximumError": "1mb"
             },
             {
               "type": "anyComponentStyle",
-              "maximumWarning": "2kb",
+              "maximumWarning": "3kb",
               "maximumError": "4kb"
-            }
-          ],
-          "fileReplacements": [
-            {
-              "replace": "apps/tilt-angular-docs/src/environments/environment.ts",
-              "with": "apps/tilt-angular-docs/src/environments/environment.prod.ts"
             }
           ],
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
-          "sourceMap": true,
-          "namedChunks": true
+          "sourceMap": true
         }
       },
       "defaultConfiguration": "production"
@@ -78,86 +89,19 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint"
+      "executor": "@nx/eslint:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ]
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/tilt-angular-docs"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/tilt-angular-docs/jest.config.ts"
       }
-    },
-    "server": {
-      "executor": "@angular-devkit/build-angular:server",
-      "options": {
-        "outputPath": "dist/apps/tilt-angular-docs/server",
-        "main": "apps/tilt-angular-docs/src/ssr.server.ts",
-        "tsConfig": "apps/tilt-angular-docs/tsconfig.server.json"
-      },
-      "configurations": {
-        "production": {
-          "outputHashing": "media",
-          "fileReplacements": [
-            {
-              "replace": "apps/tilt-angular-docs/src/environments/environment.ts",
-              "with": "apps/tilt-angular-docs/src/environments/environment.prod.ts"
-            }
-          ]
-        },
-        "development": {
-          "optimization": false,
-          "sourceMap": true,
-          "extractLicenses": false,
-          "buildOptimizer": false
-        }
-      },
-      "defaultConfiguration": "production",
-      "production": {
-        "outputHashing": "media",
-        "fileReplacements": [
-          {
-            "replace": "apps/tilt-angular-docs/src/environments/environment.ts",
-            "with": "apps/tilt-angular-docs/src/environments/environment.prod.ts"
-          }
-        ]
-      },
-      "development": {
-        "optimization": false,
-        "sourceMap": true,
-        "extractLicenses": false
-      }
-    },
-    "serve-ssr": {
-      "executor": "@angular-devkit/build-angular:ssr-dev-server",
-      "configurations": {
-        "development": {
-          "browserTarget": "tilt-angular-docs:build:development",
-          "serverTarget": "tilt-angular-docs:server:development"
-        },
-        "production": {
-          "browserTarget": "tilt-angular-docs:build:production",
-          "serverTarget": "tilt-angular-docs:server:production"
-        }
-      },
-      "defaultConfiguration": "development"
-    },
-    "prerender": {
-      "executor": "@angular-devkit/build-angular:prerender",
-      "options": {
-        "routesFile": "apps/tilt-angular-docs/routes.txt"
-      },
-      "configurations": {
-        "development": {
-          "browserTarget": "tilt-angular-docs:build:development",
-          "serverTarget": "tilt-angular-docs:server:development"
-        },
-        "production": {
-          "browserTarget": "tilt-angular-docs:build:production",
-          "serverTarget": "tilt-angular-docs:server:production"
-        }
-      },
-      "defaultConfiguration": "development"
     }
-  },
-  "tags": []
+  }
 }

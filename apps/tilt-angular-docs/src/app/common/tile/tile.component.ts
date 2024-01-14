@@ -8,7 +8,7 @@ import {Component, Input} from '@angular/core';
     <span class="tile">
       <span class="tile__inner">
         <span class="tile__image">
-          <ng-content></ng-content>
+          <ng-content/>
         </span>
         <span class="tile__text">
           {{label}}
@@ -16,6 +16,7 @@ import {Component, Input} from '@angular/core';
       </span>
       <span class="tile__decoration"></span>
     </span>`,
+  standalone: true,
 })
 export class TileComponent {
 

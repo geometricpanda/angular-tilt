@@ -1,8 +1,8 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {coerceNumberProperty} from '@angular/cdk/coercion';
 
 @Pipe({
   name: 'toBoolean',
+  standalone: true
 })
 export class PlaygroundToBooleanPipe implements PipeTransform {
 

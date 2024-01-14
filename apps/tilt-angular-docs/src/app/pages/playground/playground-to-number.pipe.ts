@@ -3,6 +3,7 @@ import {coerceNumberProperty} from '@angular/cdk/coercion';
 
 @Pipe({
   name: 'toNumber',
+  standalone: true
 })
 export class PlaygroundToNumberPipe implements PipeTransform {
 
