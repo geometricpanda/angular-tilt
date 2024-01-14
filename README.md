@@ -21,7 +21,7 @@ Angular Tilt is available from [npmjs.com](https://npmjs.com/package/@geometricp
 
 `yarn add @geometricpanda/angular-tilt`
 
-### Versions
+### Compatibility
 
 | Version | Angular Version |
 |---------|-----------------|
