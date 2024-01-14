@@ -9,7 +9,8 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/angular-tilt"],
       "options": {
-        "project": "libs/angular-tilt/ng-package.json"
+        "project": "libs/angular-tilt/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": true
       },
       "configurations": {
         "production": {
