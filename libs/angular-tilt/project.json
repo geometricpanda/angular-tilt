@@ -6,7 +6,7 @@
   "prefix": "tilt",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
+      "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/angular-tilt"],
       "options": {
         "project": "libs/angular-tilt/ng-package.json"
